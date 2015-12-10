@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B63E1B8F-9531-4709-B4FD-5BE2531CAB01}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestData", "TestData", "{8673183B-CFB7-43D7-9F9B-8AAA15FFFC9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestExtractor", "TestExtractor", "{E1F967C9-C982-423F-9EA8-86889C65FD21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtractorUi", "TestExtractor\ExtractorUi\ExtractorUi.csproj", "{4A4C4192-04C2-4BA0-AD42-7942E3E7E06B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extractor", "TestExtractor\Extractor\Extractor.csproj", "{84065744-B8FC-4381-A196-36DBA930C3E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structure", "TestExtractor\Structure\Structure.csproj", "{7156E258-9CA6-4D8B-B724-FF77D107EE89}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extractors", "Extractors", "{10913BC9-D7CB-4DD6-9685-0B65040A493A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnit", "TestExtractor\Extractors\NUnit\NUnit.csproj", "{4EAC22FC-1DCB-4D54-94B3-3FEE9CDC8342}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Time", "TestExtractor\Time\Time.csproj", "{2229CA95-041A-4FFF-943A-9366BCEFA646}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A4C4192-04C2-4BA0-AD42-7942E3E7E06B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A4C4192-04C2-4BA0-AD42-7942E3E7E06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A4C4192-04C2-4BA0-AD42-7942E3E7E06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A4C4192-04C2-4BA0-AD42-7942E3E7E06B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84065744-B8FC-4381-A196-36DBA930C3E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84065744-B8FC-4381-A196-36DBA930C3E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84065744-B8FC-4381-A196-36DBA930C3E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84065744-B8FC-4381-A196-36DBA930C3E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7156E258-9CA6-4D8B-B724-FF77D107EE89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7156E258-9CA6-4D8B-B724-FF77D107EE89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7156E258-9CA6-4D8B-B724-FF77D107EE89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7156E258-9CA6-4D8B-B724-FF77D107EE89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EAC22FC-1DCB-4D54-94B3-3FEE9CDC8342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EAC22FC-1DCB-4D54-94B3-3FEE9CDC8342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EAC22FC-1DCB-4D54-94B3-3FEE9CDC8342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EAC22FC-1DCB-4D54-94B3-3FEE9CDC8342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2229CA95-041A-4FFF-943A-9366BCEFA646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2229CA95-041A-4FFF-943A-9366BCEFA646}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2229CA95-041A-4FFF-943A-9366BCEFA646}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2229CA95-041A-4FFF-943A-9366BCEFA646}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4A4C4192-04C2-4BA0-AD42-7942E3E7E06B} = {E1F967C9-C982-423F-9EA8-86889C65FD21}
+		{84065744-B8FC-4381-A196-36DBA930C3E3} = {E1F967C9-C982-423F-9EA8-86889C65FD21}
+		{7156E258-9CA6-4D8B-B724-FF77D107EE89} = {E1F967C9-C982-423F-9EA8-86889C65FD21}
+		{10913BC9-D7CB-4DD6-9685-0B65040A493A} = {E1F967C9-C982-423F-9EA8-86889C65FD21}
+		{4EAC22FC-1DCB-4D54-94B3-3FEE9CDC8342} = {10913BC9-D7CB-4DD6-9685-0B65040A493A}
+		{2229CA95-041A-4FFF-943A-9366BCEFA646} = {E1F967C9-C982-423F-9EA8-86889C65FD21}
+	EndGlobalSection
+EndGlobal
