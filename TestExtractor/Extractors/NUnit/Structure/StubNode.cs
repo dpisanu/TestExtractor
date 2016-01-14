@@ -6,8 +6,8 @@ namespace TestExtractor.Extractors.NUnit.Structure
 {
     /// <summary>
     ///     Concrete implementation of the Stub Node Interface
-    ///     Class :     <see cref="Node" />
-    ///     Interface : <see cref="IStubNode" />
+    ///     Inherits Class       :     <see cref="Node" />
+    ///     Implements Interface : <see cref="IStubNode" />
     /// </summary>
     [Serializable]
     public class StubNode : Node, IStubNode

@@ -4,12 +4,15 @@ using System.IO;
 using System.Linq;
 using NUnit.Core;
 using NUnit.Util;
-using TestExtractor.Extractor.Enums;
 using TestExtractor.Extractors.NUnit.Structure;
 using TestExtractor.Structure;
 
 namespace TestExtractor.Extractors.NUnit.Extractor
 {
+    /// <summary>
+    ///     Concrete implementation of an Extractor to NUnit Test Assemblies
+    ///     Inherits Class : <see cref="TestExtractor.Extractor.Extractor.Extractor" />
+    /// </summary>
     [Serializable]
     public sealed class NUnit : TestExtractor.Extractor.Extractor.Extractor
     {
@@ -20,12 +23,15 @@ namespace TestExtractor.Extractors.NUnit.Extractor
         /// <summary>
         ///     Created a new instance of <see cref="NUnit" />
         /// </summary>
-        public NUnit ()
+        public NUnit()
         {
-            TestFramework = TestFramework.NUnit;
+            TestFramework = TestExtractor.Extractor.Enums.TestFramework.NUnit;
         }
 
-        protected override void Extract ()
+        /// <summary>
+        ///     Overrides <see cref="TestExtractor.Extractor.Extractor.Extractor.Extract()" />
+        /// </summary>
+        protected override void Extract()
         {
             var assemblies = AppDomain.CurrentDomain.GetData(AppDataDomainExtractionAssemblyName) as IList<string>;
             if (assemblies == null || !assemblies.Any())
@@ -44,7 +50,7 @@ namespace TestExtractor.Extractors.NUnit.Extractor
             ServiceManager.Services.AddService(new TestAgency());
             ServiceManager.Services.InitializeServices();
 
-            foreach (var assembly in assemblies.Distinct().Where(File.Exists))
+            foreach (string assembly in assemblies.Distinct().Where(File.Exists))
             {
                 _assembly = assembly;
 
@@ -60,8 +66,8 @@ namespace TestExtractor.Extractors.NUnit.Extractor
                 _assembly = string.Empty;
             }
 
-            var tests = TestMethods.ToList();
-            var testSuites = TestSuites.ToList();
+            List<IStubNode> tests = TestMethods.ToList();
+            List<ISuiteNode> testSuites = TestSuites.ToList();
 
             AppDomain.CurrentDomain.SetData(AppDataDomainExtractionStubName, tests);
             AppDomain.CurrentDomain.SetData(AppDataDomainExtractionSuiteName, testSuites);
@@ -79,11 +85,11 @@ namespace TestExtractor.Extractors.NUnit.Extractor
             }
         }
 
-        private static void AddNode (TestNode node)
+        private static void AddNode(TestNode node)
         {
             if (node.IsSuite)
             {
-                var suite = new SuiteNode(node) { Assembly = _assembly };
+                var suite = new SuiteNode(node) {Assembly = _assembly};
                 TestSuites.Add(suite);
                 foreach (TestNode test in node.Tests)
                 {
@@ -92,7 +98,7 @@ namespace TestExtractor.Extractors.NUnit.Extractor
             }
             else
             {
-                var test = new StubNode(node) { Assembly = _assembly };
+                var test = new StubNode(node) {Assembly = _assembly};
                 TestMethods.Add(test);
             }
         }

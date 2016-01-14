@@ -7,8 +7,8 @@ namespace TestExtractor.Extractors.NUnit.Structure
 {
     /// <summary>
     ///     Concrete implementation of the Suite Node Interface
-    ///     Class :     <see cref="Node" />
-    ///     Interface : <see cref="ISuiteNode" />
+    ///     Inherits Class       :     <see cref="Node" />
+    ///     Implements Interface : <see cref="ISuiteNode" />
     /// </summary>
     [Serializable]
     public sealed class SuiteNode : Node, ISuiteNode

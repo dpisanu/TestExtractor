@@ -5,7 +5,7 @@ namespace TestExtractor.Extractors.NUnit.Structure
 {
     /// <summary>
     ///     Concrete implementation of the Node Name Interface
-    ///     Inherits : <see cref="TestExtractor.Structure.NodeName" />
+    ///     Inherits Class : <see cref="TestExtractor.Structure.NodeName" />
     /// </summary>
     [Serializable]
     public sealed class NodeName : TestExtractor.Structure.NodeName

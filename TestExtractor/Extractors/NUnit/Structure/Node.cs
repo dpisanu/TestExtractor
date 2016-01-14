@@ -7,7 +7,7 @@ namespace TestExtractor.Extractors.NUnit.Structure
 {
     /// <summary>
     ///     Concrete implementation of the Node Interface
-    ///     Inherits : <see cref="Node{T}" />
+    ///     Inherits Class : <see cref="Node{T}" />
     /// </summary>
     [Serializable]
     public abstract class Node : Node<TestNode>

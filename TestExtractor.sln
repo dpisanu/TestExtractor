@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B63E1B8F-9531-4709-B4FD-5BE2531CAB01}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnit", "TestExtractor\Extractors\NUnit\NUnit.csproj", "{4EAC22FC-1DCB-4D54-94B3-3FEE9CDC8342}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Time", "TestExtractor\Time\Time.csproj", "{2229CA95-041A-4FFF-943A-9366BCEFA646}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filter", "TestExtractor\Filter\Filter.csproj", "{886E868B-C76C-4569-8094-E98A9FB16B78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{2229CA95-041A-4FFF-943A-9366BCEFA646}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2229CA95-041A-4FFF-943A-9366BCEFA646}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2229CA95-041A-4FFF-943A-9366BCEFA646}.Release|Any CPU.Build.0 = Release|Any CPU
+		{886E868B-C76C-4569-8094-E98A9FB16B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{886E868B-C76C-4569-8094-E98A9FB16B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{886E868B-C76C-4569-8094-E98A9FB16B78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{886E868B-C76C-4569-8094-E98A9FB16B78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,5 +64,6 @@ Global
 		{10913BC9-D7CB-4DD6-9685-0B65040A493A} = {E1F967C9-C982-423F-9EA8-86889C65FD21}
 		{4EAC22FC-1DCB-4D54-94B3-3FEE9CDC8342} = {10913BC9-D7CB-4DD6-9685-0B65040A493A}
 		{2229CA95-041A-4FFF-943A-9366BCEFA646} = {E1F967C9-C982-423F-9EA8-86889C65FD21}
+		{886E868B-C76C-4569-8094-E98A9FB16B78} = {E1F967C9-C982-423F-9EA8-86889C65FD21}
 	EndGlobalSection
 EndGlobal
