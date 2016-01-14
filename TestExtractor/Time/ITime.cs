@@ -1,16 +1,27 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace TestExtractor.Time
 {
     public interface ITime
     {
-        void Start ();
-
-        void Reset ();
-
-        void Stop ();
-
+        /// <summary>
+        ///     <see cref="TimeSpan" /> of the Measured Time
+        /// </summary>
         TimeSpan Elapsed { get; }
+
+        /// <summary>
+        ///     Start a Time Measurement
+        /// </summary>
+        void Start();
+
+        /// <summary>
+        ///     Reset the Time Measurement
+        /// </summary>
+        void Reset();
+
+        /// <summary>
+        ///     Stop the Time Measurement
+        /// </summary>
+        void Stop();
     }
 }

@@ -6,7 +6,7 @@ namespace TestExtractor.Structure
 {
     /// <summary>
     ///     Concrete implementation of the Node Interface
-    ///     Interface : <see cref="INode" />
+    ///     Implements Interface : <see cref="INode" />
     /// </summary>
     /// <typeparam name="T"></typeparam>
     [Serializable]

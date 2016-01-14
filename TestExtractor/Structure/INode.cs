@@ -6,7 +6,7 @@ namespace TestExtractor.Structure
 {
     /// <summary>
     ///     Interace specifying the API of a Node
-    ///     Interface : <see cref="IEquatable{T}" />
+    ///     Implements Interface : <see cref="IEquatable{T}" />
     /// </summary>
     public interface INode : IEquatable<INode>
     {
