@@ -2,8 +2,82 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow"
-        Height="267"
-        Width="790">
+        Height="390"
+        Width="795">
+    
+    <Window.Resources>
+        <Style x:Key="GridStyle"
+               TargetType="{x:Type ListView}">
+            <Setter Property="VirtualizingStackPanel.IsVirtualizing"
+                    Value="{Binding ElementName=_isVirtualizingTrue, Path=IsChecked}"/>
+            <Setter Property="VirtualizingStackPanel.VirtualizationMode"
+                    Value="Standard"/>
+            <Setter Property="ScrollViewer.IsDeferredScrollingEnabled"
+                    Value="False"/>
+            <Setter Property="ItemsSource"
+                    Value="{Binding}"/>
+            <Setter Property="View">
+                <Setter.Value>
+                    <GridView>
+                        <GridViewColumn Header="Assembly"
+                                        Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Assembly}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="ClassName"
+                                        Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ClassName}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="NodeType"
+                                        Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NodeType}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="NodeName"
+                                        Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding NodeName.FullName}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Categories"
+                                        Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Categories}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsLoading}"
+                             Value="True">
+                    <Setter Property="ListView.Cursor"
+                            Value="Wait"/>
+                    <Setter Property="ListView.Background"
+                            Value="LightGray"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
     <Grid Margin="0,0,2,-9">
         <Label Content="Amount of files added"
                HorizontalAlignment="Left"
@@ -29,12 +103,6 @@
                 Width="75"
                 Name="ExtractButton"
                 Click="ExtractButtonClick"/>
-        <RichTextBox
-                     Margin="10,95,10,18"
-                     Name="ResultRichTextBox"
-                     IsReadOnly="True">
-            <FlowDocument/>
-        </RichTextBox>
         <RadioButton Content="Tests"
                      HorizontalAlignment="Left"
                      Margin="101,71,0,0"
@@ -46,5 +114,19 @@
                      VerticalAlignment="Top"
                      Name="SuitsToggle"
                      IsChecked="True"/>
+        
+        <ListView Margin="10,95,15,88"
+                  x:Name="ExtractionListView"
+                  Style="{DynamicResource GridStyle}"
+                  >
+        </ListView>
+        <RichTextBox
+                     Margin="10,0,15,18"
+                     Name="ResultRichTextBox"
+                     IsReadOnly="True" Height="65" VerticalAlignment="Bottom">
+            <FlowDocument/>
+        </RichTextBox>
+        
+
     </Grid>
 </Window>
