@@ -50,7 +50,7 @@ namespace TestExtractor.Extractors.NUnit.Extractor
             ServiceManager.Services.AddService(new TestAgency());
             ServiceManager.Services.InitializeServices();
 
-            foreach (string assembly in assemblies.Distinct().Where(File.Exists))
+            foreach (var assembly in assemblies.Distinct().Where(File.Exists))
             {
                 _assembly = assembly;
 
@@ -66,8 +66,8 @@ namespace TestExtractor.Extractors.NUnit.Extractor
                 _assembly = string.Empty;
             }
 
-            List<IStubNode> tests = TestMethods.ToList();
-            List<ISuiteNode> testSuites = TestSuites.ToList();
+            var tests = TestMethods.ToList();
+            var testSuites = TestSuites.ToList();
 
             AppDomain.CurrentDomain.SetData(AppDataDomainExtractionStubName, tests);
             AppDomain.CurrentDomain.SetData(AppDataDomainExtractionSuiteName, testSuites);
