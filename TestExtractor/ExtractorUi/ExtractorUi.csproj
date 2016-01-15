@@ -53,6 +53,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\INodeTypeFilterViewModel.cs" />
+    <Compile Include="ViewModel\INodeTypeFiltersViewModel.cs" />
+    <Compile Include="ViewModel\NodeTypeFilterViewModel.cs" />
+    <Compile Include="ViewModel\NodeTypeFiltersViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

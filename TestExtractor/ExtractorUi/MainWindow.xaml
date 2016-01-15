@@ -4,7 +4,7 @@
         Title="MainWindow"
         Height="390"
         Width="795">
-    
+
     <Window.Resources>
         <Style x:Key="GridStyle"
                TargetType="{x:Type ListView}">
@@ -77,44 +77,53 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-    
+
     <Grid Margin="0,0,2,-9">
-        <Label Content="Amount of files added"
-               HorizontalAlignment="Left"
-               Margin="10,10,0,0"
-               VerticalAlignment="Top"
-               RenderTransformOrigin="-0.342,-0.654"/>
-        <Label Content="0"
-               HorizontalAlignment="Left"
-               Margin="155,10,0,0"
-               VerticalAlignment="Top"
-               Name="AmountOfFileLabel"/>
         <Button Content="Add files"
                 HorizontalAlignment="Left"
-                Margin="10,41,0,0"
+                Margin="10,10,0,0"
                 VerticalAlignment="Top"
                 Width="75"
                 Name="LoadFilesButton"
                 Click="LoadFilesButtonClick"/>
+        <Label Content="Amount of files added"
+               HorizontalAlignment="Left"
+               Margin="95,10,0,0"
+               VerticalAlignment="Top"
+               RenderTransformOrigin="-0.342,-0.654"/>
+        <Label Content="0"
+               HorizontalAlignment="Left"
+               Margin="232,10,0,0"
+               VerticalAlignment="Top"
+               Name="AmountOfFileLabel"/>
+        
         <Button Content="Extract"
                 HorizontalAlignment="Left"
-                Margin="10,68,0,0"
+                Margin="10,37,0,0"
                 VerticalAlignment="Top"
                 Width="75"
                 Name="ExtractButton"
                 Click="ExtractButtonClick"/>
         <RadioButton Content="Tests"
+                     Name="RadioButtonTests"
                      HorizontalAlignment="Left"
-                     Margin="101,71,0,0"
+                     Margin="99,41,0,0"
                      VerticalAlignment="Top"
-                     Name="TestToggle"/>
+                     Checked="TestSuiteToggled"/>
         <RadioButton Content="Suits"
+                     Name="RadioButtonSuits"
                      HorizontalAlignment="Left"
-                     Margin="155,71,0,0"
+                     Margin="156,41,0,0"
                      VerticalAlignment="Top"
-                     Name="SuitsToggle"
-                     IsChecked="True"/>
-        
+                     IsChecked="True"
+                     Checked="TestSuiteToggled"/>
+
+        <ListBox HorizontalAlignment="Left" 
+                 Height="26" 
+                 VerticalAlignment="Top" 
+                 Width="303" 
+                 Margin="10,64,0,0"/>
+
         <ListView Margin="10,95,15,88"
                   x:Name="ExtractionListView"
                   Style="{DynamicResource GridStyle}"
@@ -127,6 +136,7 @@
             <FlowDocument/>
         </RichTextBox>
         
+
 
     </Grid>
 </Window>
