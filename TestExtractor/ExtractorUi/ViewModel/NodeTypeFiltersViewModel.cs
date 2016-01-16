@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ExtractorUi.Interfaces;
 using TestExtractor.Structure.Enums;
 
 namespace ExtractorUi.ViewModel
 {
-    internal class NodeTypeFiltersViewModel : INodeTypeFiltersViewModel
+    internal class NodeTypeFiltersViewModel : ViewModel, INodeTypeFiltersViewModel
     {
         public NodeTypeFiltersViewModel()
         {

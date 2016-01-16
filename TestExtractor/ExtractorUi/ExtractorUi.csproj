@@ -53,10 +53,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\INodeTypeFilterViewModel.cs" />
-    <Compile Include="ViewModel\INodeTypeFiltersViewModel.cs" />
+    <Compile Include="Interfaces\IExtractionGridViewModel.cs" />
+    <Compile Include="Interfaces\IViewModel.cs" />
+    <Compile Include="Interfaces\INodeTypeFilterViewModel.cs" />
+    <Compile Include="Interfaces\INodeTypeFiltersViewModel.cs" />
+    <Compile Include="Reflection.cs" />
+    <Compile Include="ViewModel\ExtractionGridViewModel.cs" />
     <Compile Include="ViewModel\NodeTypeFilterViewModel.cs" />
     <Compile Include="ViewModel\NodeTypeFiltersViewModel.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

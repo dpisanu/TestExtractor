@@ -1,15 +1,43 @@
-﻿using TestExtractor.Structure.Enums;
+﻿using ExtractorUi.Interfaces;
+using TestExtractor.Structure.Enums;
 
 namespace ExtractorUi.ViewModel
 {
-    internal class NodeTypeFilterViewModel : INodeTypeFilterViewModel
+    internal class NodeTypeFilterViewModel : ViewModel, INodeTypeFilterViewModel
     {
+        private NodeTypes _nodeType;
+        private bool _enabled;
+
         public NodeTypeFilterViewModel(NodeTypes nodeType)
         {
             NodeType = nodeType;
         }
 
-        public NodeTypes NodeType { get; private set; }
+        public NodeTypes NodeType
+        {
+            get
+            {
+                return _nodeType;
+            }
+            private set
+            {
+                _nodeType = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool Enabled
+        {
+            get
+            {
+                return _enabled;
+            }
+            set
+            {
+                _enabled = value;
+                OnPropertyChanged();
+            }
+        }
 
         public override string ToString()
         {

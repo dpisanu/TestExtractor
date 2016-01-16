@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace ExtractorUi.ViewModel
+namespace ExtractorUi.Interfaces
 {
-    internal interface INodeTypeFiltersViewModel
+    internal interface INodeTypeFiltersViewModel : IViewModel
     {
         IList<INodeTypeFilterViewModel> NodeTypeFilters { get; }
     }

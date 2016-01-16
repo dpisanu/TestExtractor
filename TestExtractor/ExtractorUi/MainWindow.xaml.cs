@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using ExtractorUi.Interfaces;
 using ExtractorUi.ViewModel;
 using Microsoft.Win32;
 using TestExtractor.Extractor;
 using TestExtractor.Extractor.Extractor;
+using TestExtractor.Extractors.NUnit.Extractor;
 using TestExtractor.Structure;
 
 namespace ExtractorUi
@@ -18,22 +20,22 @@ namespace ExtractorUi
         private readonly IExtractor _extractor;
         private readonly OpenFileDialog _fileDialog;
         private readonly List<string> _files;
-        private bool extractSuits = true;
         private INodeTypeFiltersViewModel _nodeTypeFiltersViewModel;
+        private bool extractSuits = true;
 
-        public MainWindow ()
+        public MainWindow()
         {
             InitializeComponent();
-            _extractor = ExtractFactory.Extractor<TestExtractor.Extractors.NUnit.Extractor.NUnit>();
-            _fileDialog = new OpenFileDialog { Multiselect = true };
+            _extractor = ExtractFactory.Extractor<NUnit>();
+            _fileDialog = new OpenFileDialog {Multiselect = true};
             _files = new List<string>();
-            _nodeTypeFiltersViewModel = new NodeTypeFiltersViewModel(); 
+            _nodeTypeFiltersViewModel = new NodeTypeFiltersViewModel();
         }
 
         private void LoadFilesButtonClick(object sender, RoutedEventArgs e)
         {
             _fileDialog.ShowDialog();
-            
+
             _files.AddRange(_fileDialog.FileNames);
             AmountOfFileLabel.Content = _files.Count();
         }
@@ -68,7 +70,7 @@ namespace ExtractorUi
 
         private void LogTime(string message, TimeSpan timeSpan)
         {
-            var msg = string.Format(message, timeSpan.Milliseconds);
+            string msg = string.Format(message, timeSpan.Milliseconds);
             ResultRichTextBox.AppendText(msg);
             ResultRichTextBox.AppendText(Environment.NewLine);
         }
@@ -77,7 +79,6 @@ namespace ExtractorUi
         {
             if (sender == RadioButtonSuits)
             {
-                
             }
         }
     }
