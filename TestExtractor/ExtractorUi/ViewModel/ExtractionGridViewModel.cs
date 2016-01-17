@@ -5,7 +5,7 @@ using TestExtractor.Structure;
 
 namespace ExtractorUi.ViewModel
 {
-    internal class ExtractionGridViewModel : ViewModel, IExtractionGridViewModel
+    internal sealed class ExtractionGridViewModel : ViewModel, IExtractionGridViewModel
     {
         private static readonly string ItemsPropertyNames = Reflection.PropertyName((IExtractionGridViewModel vm) => vm.Items);
         private IList<INode> _items;

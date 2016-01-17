@@ -54,11 +54,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Interfaces\IExtractionGridViewModel.cs" />
+    <Compile Include="Interfaces\IMainWindowViewModel.cs" />
     <Compile Include="Interfaces\IViewModel.cs" />
     <Compile Include="Interfaces\INodeTypeFilterViewModel.cs" />
     <Compile Include="Interfaces\INodeTypeFiltersViewModel.cs" />
     <Compile Include="Reflection.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="ViewModel\ExtractionGridViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\NodeTypeFilterViewModel.cs" />
     <Compile Include="ViewModel\NodeTypeFiltersViewModel.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />

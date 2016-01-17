@@ -2,8 +2,7 @@
 
 namespace ExtractorUi.Interfaces
 {
-    internal interface INodeTypeFiltersViewModel : IViewModel
+    internal interface INodeTypeFiltersViewModel : IList<INodeTypeFilterViewModel>, IViewModel
     {
-        IList<INodeTypeFilterViewModel> NodeTypeFilters { get; }
     }
 }

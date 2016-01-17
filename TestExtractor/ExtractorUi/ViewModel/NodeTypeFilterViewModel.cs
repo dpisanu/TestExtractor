@@ -3,7 +3,7 @@ using TestExtractor.Structure.Enums;
 
 namespace ExtractorUi.ViewModel
 {
-    internal class NodeTypeFilterViewModel : ViewModel, INodeTypeFilterViewModel
+    internal sealed class NodeTypeFilterViewModel : ViewModel, INodeTypeFilterViewModel
     {
         private NodeTypes _nodeType;
         private bool _enabled;
