@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Windows.Documents;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using TestExtractor.Structure;
 
@@ -16,8 +14,10 @@ namespace ExtractorUi.Interfaces
 
         bool ExtractSuits { get; set; }
 
-        IList<INode> ExtractedData { get; }
+        string AmoutOfFiles { get; }
 
-        FlowDocument ResultRichtTextBoxFlowDocument { get; set; }
+        ObservableCollection<INode> ExtractedData { get; }
+
+        string Information { get; set; }
     }
 }

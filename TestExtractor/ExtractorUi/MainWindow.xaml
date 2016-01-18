@@ -9,13 +9,13 @@
         <Style x:Key="GridStyle"
                TargetType="{x:Type ListView}">
             <Setter Property="VirtualizingStackPanel.IsVirtualizing"
-                    Value="{Binding ElementName=_isVirtualizingTrue, Path=IsChecked}"/>
+                    Value="{Binding ElementName=_isVirtualizingTrue, Path=IsChecked}" />
             <Setter Property="VirtualizingStackPanel.VirtualizationMode"
-                    Value="Standard"/>
+                    Value="Standard" />
             <Setter Property="ScrollViewer.IsDeferredScrollingEnabled"
-                    Value="False"/>
+                    Value="False" />
             <Setter Property="ItemsSource"
-                    Value="{Binding}"/>
+                    Value="{Binding}" />
             <Setter Property="View">
                 <Setter.Value>
                     <GridView>
@@ -23,7 +23,7 @@
                                         Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Assembly}"/>
+                                    <TextBlock Text="{Binding Assembly}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -32,7 +32,7 @@
                                         Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding ClassName}"/>
+                                    <TextBlock Text="{Binding ClassName}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -41,7 +41,7 @@
                                         Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding NodeType}"/>
+                                    <TextBlock Text="{Binding NodeType}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -50,7 +50,7 @@
                                         Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding NodeName.FullName}"/>
+                                    <TextBlock Text="{Binding NodeName.FullName}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -59,7 +59,7 @@
                                         Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ListView ItemsSource="{Binding Categories}"/>
+                                    <ListView ItemsSource="{Binding Categories}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -70,9 +70,9 @@
                 <DataTrigger Binding="{Binding IsLoading}"
                              Value="True">
                     <Setter Property="ListView.Cursor"
-                            Value="Wait"/>
+                            Value="Wait" />
                     <Setter Property="ListView.Background"
-                            Value="LightGray"/>
+                            Value="LightGray" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -85,58 +85,56 @@
                 VerticalAlignment="Top"
                 Width="75"
                 Name="LoadFilesButton"
-                Click="LoadFilesButtonClick"/>
+                Command="{Binding AddFilesCommand}" />
         <Label Content="Amount of files added"
                HorizontalAlignment="Left"
                Margin="95,10,0,0"
                VerticalAlignment="Top"
-               RenderTransformOrigin="-0.342,-0.654"/>
-        <Label Content="0"
+               RenderTransformOrigin="-0.342,-0.654" />
+        <Label Content="{Binding AmoutOfFiles}"
                HorizontalAlignment="Left"
                Margin="232,10,0,0"
                VerticalAlignment="Top"
-               Name="AmountOfFileLabel"/>
-        
+               Name="AmountOfFileLabel" />
+
         <Button Content="Extract"
                 HorizontalAlignment="Left"
                 Margin="10,37,0,0"
                 VerticalAlignment="Top"
                 Width="75"
                 Name="ExtractButton"
-                Click="ExtractButtonClick"/>
+                Command="{Binding ExtractCommand}" />
         <RadioButton Content="Tests"
                      Name="RadioButtonTests"
                      HorizontalAlignment="Left"
                      Margin="99,41,0,0"
                      VerticalAlignment="Top"
-                     Checked="TestSuiteToggled"/>
+                     IsChecked="{Binding Path=ExtractTests}" />
         <RadioButton Content="Suits"
                      Name="RadioButtonSuits"
                      HorizontalAlignment="Left"
                      Margin="156,41,0,0"
                      VerticalAlignment="Top"
-                     IsChecked="True"
-                     Checked="TestSuiteToggled"/>
+                     IsChecked="{Binding Path=ExtractSuits}" />
 
-        <ListBox HorizontalAlignment="Left" 
-                 Height="26" 
-                 VerticalAlignment="Top" 
-                 Width="303" 
-                 Margin="10,64,0,0"/>
+        <ListBox HorizontalAlignment="Left"
+                 Height="26"
+                 VerticalAlignment="Top"
+                 Width="303"
+                 Margin="10,64,0,0" />
 
         <ListView Margin="10,95,15,88"
                   x:Name="ExtractionListView"
                   Style="{DynamicResource GridStyle}"
-                  >
-        </ListView>
-        <RichTextBox
-                     Margin="10,0,15,18"
-                     Name="ResultRichTextBox"
-                     IsReadOnly="True" Height="65" VerticalAlignment="Bottom">
-            <FlowDocument/>
-        </RichTextBox>
-        
+                  ItemsSource="{Binding Path=ExtractedData}" />
 
+        <TextBox
+            Margin="10,0,15,18"
+            Name="Information"
+            IsReadOnly="True" Height="65"
+            VerticalAlignment="Bottom"
+            Text="{Binding Information}">
+        </TextBox>
 
     </Grid>
 </Window>

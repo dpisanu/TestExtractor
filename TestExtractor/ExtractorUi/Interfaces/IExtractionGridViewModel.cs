@@ -1,20 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
 using TestExtractor.Structure;
 
 namespace ExtractorUi.Interfaces
 {
-    internal interface IExtractionGridViewModel : IViewModel
+    internal interface IExtractionGridViewModel : IList<INode>, IViewModel
     {
-        IList<INode> Items { get; }
+        void AddRange(IEnumerable<INode> nodes);
 
-        void Clear();
+        void AddRange<T>(IEnumerable<T> nodes) where T : INode;
 
-        void AddItem(INode node);
-
-        void AddItem<T>(T node) where T : INode;
-
-        void AddItems(IEnumerable<INode> nodes);
-
-        void AddItems<T>(IEnumerable<T> nodes) where T : INode;
+        event NotifyCollectionChangedEventHandler CollectionChanged;
     }
 }
