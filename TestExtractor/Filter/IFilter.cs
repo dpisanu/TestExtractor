@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using TestExtractor.Structure;
+using TestExtractor.Structure.Enums;
 
-namespace Filter
+namespace TestExtractor.Extractor.Filter
 {
     /// <summary>
     ///     Interface defining the API for a Filter Object
@@ -25,5 +26,14 @@ namespace Filter
         /// <param name="assemblies">Assembly name to filter by</param>
         /// <returns>An <see cref="IFilterResult{T}" /></returns>
         IFilterResult<T> FilterAssembly<T>(IList<T> nodes, IList<string> assemblies) where T : INode;
+
+        /// <summary>
+        ///     Filter by Node Types
+        /// </summary>
+        /// <typeparam name="T">Type of input object. Needs to be of <see cref="INode" /></typeparam>
+        /// <param name="nodes">Nodes source to filter</param>
+        /// <param name="nodeTypes">Node Types name to filter by</param>
+        /// <returns>An <see cref="IFilterResult{T}" /></returns>
+        IFilterResult<T> FilterNodeTypes<T>(IList<T> nodes, IList<NodeTypes> nodeTypes) where T : INode;
     }
 }

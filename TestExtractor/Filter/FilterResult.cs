@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TestExtractor.Structure;
 
-namespace Filter
+namespace TestExtractor.Extractor.Filter
 {
     /// <summary>
     ///     Concrete Implementation of a FilterResult

@@ -18,6 +18,8 @@ namespace ExtractorUi.Interfaces
 
         ObservableCollection<INode> ExtractedData { get; }
 
+        ObservableCollection<INodeTypeFilterViewModel> NodeTypeFilters { get; }
+
         string Information { get; set; }
     }
 }

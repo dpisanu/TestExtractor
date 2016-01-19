@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using TestExtractor.Structure;
 
-namespace Filter
+namespace TestExtractor.Extractor.Filter
 {
     /// <summary>
     ///     Interface defining the APi of a Filter Result

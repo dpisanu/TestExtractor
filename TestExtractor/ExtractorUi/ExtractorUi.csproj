@@ -53,6 +53,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\NumberToBooleanConverter.cs" />
     <Compile Include="Interfaces\IExtractionGridViewModel.cs" />
     <Compile Include="Interfaces\IMainWindowViewModel.cs" />
     <Compile Include="Interfaces\IViewModel.cs" />
@@ -113,6 +114,10 @@
     <ProjectReference Include="..\Extractor\Extractor.csproj">
       <Project>{84065744-b8fc-4381-a196-36dba930c3e3}</Project>
       <Name>Extractor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Filter\Filter.csproj">
+      <Project>{886E868B-C76C-4569-8094-E98A9FB16B78}</Project>
+      <Name>Filter</Name>
     </ProjectReference>
     <ProjectReference Include="..\Structure\Structure.csproj">
       <Project>{7156e258-9ca6-4d8b-b724-ff77d107ee89}</Project>

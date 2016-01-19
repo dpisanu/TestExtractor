@@ -1,11 +1,15 @@
 ﻿<Window x:Class="ExtractorUi.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:ExtractorUi.Converters"
         Title="MainWindow"
         Height="390"
         Width="795">
 
     <Window.Resources>
+        
+        <converters:NumberToBooleanConverter x:Key="NumberToBooleanConverter" />
+        
         <Style x:Key="GridStyle"
                TargetType="{x:Type ListView}">
             <Setter Property="VirtualizingStackPanel.IsVirtualizing"
@@ -76,9 +80,11 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+        
     </Window.Resources>
 
     <Grid Margin="0,0,2,-9">
+        
         <Button Content="Add files"
                 HorizontalAlignment="Left"
                 Margin="10,10,0,0"
@@ -117,13 +123,30 @@
                      VerticalAlignment="Top"
                      IsChecked="{Binding Path=ExtractSuits}" />
 
+        <Label Content="Node Types" 
+               HorizontalAlignment="Left" 
+               Margin="10,64,0,0" 
+               VerticalAlignment="Top" />
         <ListBox HorizontalAlignment="Left"
-                 Height="26"
+                 Height="32"
                  VerticalAlignment="Top"
-                 Width="303"
-                 Margin="10,64,0,0" />
+                 Width="364"
+                 Margin="99,62,0,0"
+                 ItemsSource="{Binding NodeTypeFilters}"
+                 IsEnabled="{Binding AmoutOfFiles, Mode=OneWay, Converter={StaticResource NumberToBooleanConverter}}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Content="{Binding NodeType}" IsChecked="{Binding Enabled}" Margin="5 5 0 0"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
-        <ListView Margin="10,95,15,88"
+        <ListView Margin="10,99,15,88"
                   x:Name="ExtractionListView"
                   Style="{DynamicResource GridStyle}"
                   ItemsSource="{Binding Path=ExtractedData}" />
@@ -133,8 +156,7 @@
             Name="Information"
             IsReadOnly="True" Height="65"
             VerticalAlignment="Bottom"
-            Text="{Binding Information}">
-        </TextBox>
+            Text="{Binding Information}" />
 
     </Grid>
 </Window>

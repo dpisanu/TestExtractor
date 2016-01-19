@@ -11,6 +11,7 @@ namespace ExtractorUi.ViewModel
         public NodeTypeFilterViewModel(NodeTypes nodeType)
         {
             NodeType = nodeType;
+            Enabled = true;
         }
 
         public NodeTypes NodeType
