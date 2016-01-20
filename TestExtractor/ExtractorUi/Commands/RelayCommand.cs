@@ -1,33 +1,36 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows.Input;
 
 namespace ExtractorUi.Commands
 {
     /// <summary>
-    /// A Relaying Command construct as described in the Microsoft MVVM Documentation 
+    ///     A Relaying Command construct as described in the Microsoft MVVM Documentation
     /// </summary>
-    /// <seealso cref="https://msdn.microsoft.com/en-us/magazine/dn237302.aspx"/>
+    /// <seealso cref="https://msdn.microsoft.com/en-us/magazine/dn237302.aspx" />
     public class RelayCommand : ICommand
     {
         private readonly Predicate<object> _canExecutePredicate;
         private readonly Action<object> _executeAction;
         private EventHandler _canExecuteChangedEventHandler;
 
-        public RelayCommand (Action<object> execute, Predicate<object> canExecute)
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
             if (execute == null)
-            {  throw new ArgumentNullException("Execute Action is not allowed to be NULL");}
+            {
+                throw new ArgumentNullException("Execute Action is not allowed to be NULL");
+            }
 
             if (canExecute == null)
-            { throw new ArgumentNullException("CanExecute Predicate is not allowed to be NULL"); }
+            {
+                throw new ArgumentNullException("CanExecute Predicate is not allowed to be NULL");
+            }
 
             _executeAction = execute;
             _canExecutePredicate = canExecute;
         }
-        
+
         /// <summary>
-        /// An event that is fired when CanExecute changes
+        ///     An event that is fired when CanExecute changes
         /// </summary>
         public event EventHandler CanExecuteChanged
         {
@@ -46,7 +49,7 @@ namespace ExtractorUi.Commands
             }
         }
 
-        public bool CanExecute (object parameter)
+        public bool CanExecute(object parameter)
         {
             if (_canExecutePredicate == null)
             {
@@ -56,7 +59,7 @@ namespace ExtractorUi.Commands
             return _canExecutePredicate == null || _canExecutePredicate(parameter);
         }
 
-        public void Execute (object parameter)
+        public void Execute(object parameter)
         {
             _executeAction(parameter);
         }

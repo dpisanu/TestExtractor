@@ -22,10 +22,9 @@ namespace ExtractorUi.ViewModel
         private static readonly string ExtractSuitsPropertyName = Reflection.PropertyName((IMainWindowViewModel vm) => vm.ExtractSuits);
         private static readonly string InformationPropertyName = Reflection.PropertyName((IMainWindowViewModel vm) => vm.Information);
 
-        private readonly IExtractor _extractor;
-        private readonly IFilter _filter;
+        private readonly ICommand _extractCommand;
         private readonly OpenFileDialog _fileDialog;
-        private readonly List<string> _files;
+        private readonly IFilter _filter;
         private bool _extractSuits;
         private bool _extractTests;
         private string _information;
@@ -34,25 +33,34 @@ namespace ExtractorUi.ViewModel
         {
             AddFilesCommand = new RelayCommand(AddFilesCommandExecute, AddFilesCommandCanExecute);
             ExtractCommand = new RelayCommand(ExtractCommandCommandExecute, ExtractCommandCommandCanExecute);
+
+            Extractor = new NUnit();
+            Files = new List<string>();
             ExtractedData = new ObservableCollection<INode>();
             ExtractedDataShadow = new List<INode>();
             NodeTypeFilters = new ObservableCollection<INodeTypeFilterViewModel>();
+            CategoryFilters = new ObservableCollection<ICategoryFilterViewModel>();
+            ExtractSuits = true;
 
-            foreach (var filter in Enum.GetValues(typeof(NodeTypes))
-                        .Cast<NodeTypes>()
-                        .Select(nodeType => new NodeTypeFilterViewModel(nodeType)))
+            foreach (var filter in Enum.GetValues(typeof (NodeTypes)) .Cast<NodeTypes>().Select(nodeType => new NodeTypeFilterViewModel(nodeType)))
             {
                 NodeTypeFilters.Add(filter);
-                filter.PropertyChanged += delegate { Filter(); };
+                filter.PropertyChanged += delegate
+                {
+                    Filter();
+                    PopulateCategoryFilters();
+                };
             }
 
-            _fileDialog = new OpenFileDialog { Multiselect = true };
-            _files = new List<string>();
-            _extractor = new NUnit();
+            _fileDialog = new OpenFileDialog {Multiselect = true};
             _filter = new Filter();
-            ExtractSuits = true;
+            _extractCommand = new ExtractCommand(this);
         }
-        
+
+        public IExtractor Extractor { get; private set; }
+        public List<string> Files { get; private set; }
+        public List<INode> ExtractedDataShadow { get; set; }
+
         public ICommand AddFilesCommand { get; private set; }
 
         public ICommand ExtractCommand { get; private set; }
@@ -83,13 +91,13 @@ namespace ExtractorUi.ViewModel
 
         public string AmoutOfFiles
         {
-            get { return _files.Count.ToString(CultureInfo.InvariantCulture); }
+            get { return Files.Count.ToString(CultureInfo.InvariantCulture); }
         }
 
-        public ObservableCollection<INode> ExtractedData { get; private set; }
-        private List<INode> ExtractedDataShadow { get; set; }
+        public ObservableCollection<INode> ExtractedData { get; set; }
 
-        public ObservableCollection<INodeTypeFilterViewModel> NodeTypeFilters { get; private set; }
+        public ObservableCollection<INodeTypeFilterViewModel> NodeTypeFilters { get; set; }
+        public ObservableCollection<ICategoryFilterViewModel> CategoryFilters { get; set; }
 
         public string Information
         {
@@ -103,72 +111,67 @@ namespace ExtractorUi.ViewModel
 
         private bool AddFilesCommandCanExecute(object o)
         {
-            return _fileDialog != null && _files != null;
+            return _fileDialog != null && Files != null;
         }
 
         private void AddFilesCommandExecute(object o)
         {
             _fileDialog.ShowDialog();
-            _files.AddRange(_fileDialog.FileNames);
+            Files.AddRange(_fileDialog.FileNames);
             OnPropertyChanged(AmountOfFilesPropertyName);
         }
 
         private bool ExtractCommandCommandCanExecute(object o)
         {
-            return _files.Any();
+            return _extractCommand.CanExecute(o);
         }
 
         private void ExtractCommandCommandExecute(object o)
         {
-            ExtractedData.Clear();
-            ExtractedDataShadow.Clear();
-            Information = string.Format("Clearing Extracted Data");
+            _extractCommand.Execute(o);
 
-            var span = new TimeSpan();
-            Information = string.Format("Extracting");
-
-            List<INode> nodes = null;
-
-            if (ExtractTests)
-            {
-                var result = _extractor.ExtractTimed<IStubNode>(_files);
-                span = result.Item2;
-                nodes = new List<INode>(result.Item1);
-            }
-            if (ExtractSuits)
-            {
-                var result = _extractor.ExtractTimed<ISuiteNode>(_files);
-                span = result.Item2;
-                nodes = new List<INode>(result.Item1);
-            }
-
-            Information = string.Format("Extraction took {0} ms", span.Milliseconds);
-            if (nodes == null || !nodes.Any())
-            {
-                return;
-            }
-
-            foreach (var node in nodes)
-            {
-                ExtractedData.Add(node);
-            }
-            ExtractedDataShadow.AddRange(ExtractedData);
-            
+            PopulateCategoryFilters();
             Filter();
         }
 
         private void Filter()
         {
             ExtractedData.Clear();
-            
-            var filteredNodes = new List<INode>();
-            // Node Types Filter
-            var nodeTypes = (from nodeTypeFilterViewModel in NodeTypeFilters where nodeTypeFilterViewModel.Enabled select nodeTypeFilterViewModel.NodeType).ToList();
 
-            filteredNodes.AddRange(_filter.FilterNodeTypes(ExtractedDataShadow, nodeTypes).OfFilters);
-            foreach (var filteredNode in filteredNodes)
+            // Node Types Filter
+            var nodeFilteredNodes = new List<INode>();
+            var nodeTypes = (from nodeTypeFilterViewModel in NodeTypeFilters
+                where nodeTypeFilterViewModel.Enabled
+                select nodeTypeFilterViewModel.NodeType).ToList();
+            nodeFilteredNodes.AddRange(_filter.FilterNodeTypes(ExtractedDataShadow, nodeTypes).OfFilters);
+
+            var categoryFilterNodes = new List<INode>();
+            var categories = (from categoryFilterViewModel in CategoryFilters
+                where categoryFilterViewModel.Enabled
+                select categoryFilterViewModel.Category).ToList();
+            categoryFilterNodes.AddRange(_filter.FilterCategories(nodeFilteredNodes, categories).OfFilters);
+
+            foreach (var filteredNode in categoryFilterNodes)
             {
                 ExtractedData.Add(filteredNode);
+            }
+        }
+
+        private void PopulateCategoryFilters()
+        {
+            CategoryFilters.Clear();
+
+            var categories = new List<string>();
+            foreach (var node in ExtractedDataShadow)
+            {
+                categories.AddRange(node.Categories);
+            }
+            categories.Add(string.Empty);
+
+            foreach (var categoryFilter in categories.Distinct().Select(category => new CategoryFilterViewModel(category)))
+            {
+                CategoryFilters.Add(categoryFilter);
+                categoryFilter.PropertyChanged += delegate { Filter(); };
             }
         }
     }

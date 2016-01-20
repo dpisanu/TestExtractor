@@ -20,6 +20,8 @@ namespace ExtractorUi.Interfaces
 
         ObservableCollection<INodeTypeFilterViewModel> NodeTypeFilters { get; }
 
+        ObservableCollection<ICategoryFilterViewModel> CategoryFilters { get; }
+
         string Information { get; set; }
     }
 }

@@ -27,6 +27,10 @@ namespace TestExtractor.Extractor.Filter
                 {
                     ofFilters.Add(node);
                 }
+                else if (categories.Contains(string.Empty) && !node.Categories.Any())
+                {
+                    ofFilters.Add(node);
+                }
                 else
                 {
                     notOfFilters.Add(node);

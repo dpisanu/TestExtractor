@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:converters="clr-namespace:ExtractorUi.Converters"
         Title="MainWindow"
-        Height="390"
+        Height="488"
         Width="795">
 
     <Window.Resources>
-        
+
         <converters:NumberToBooleanConverter x:Key="NumberToBooleanConverter" />
-        
+
         <Style x:Key="GridStyle"
                TargetType="{x:Type ListView}">
             <Setter Property="VirtualizingStackPanel.IsVirtualizing"
@@ -80,11 +80,11 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        
+
     </Window.Resources>
 
     <Grid Margin="0,0,2,-9">
-        
+
         <Button Content="Add files"
                 HorizontalAlignment="Left"
                 Margin="10,10,0,0"
@@ -146,17 +146,45 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <ListView Margin="10,99,15,88"
+        <Label Content="Categories" 
+               HorizontalAlignment="Left" 
+               Margin="10,95,0,0" 
+               VerticalAlignment="Top"/>
+        <ListBox Height="51" 
+                 Margin="99,99,10,0" 
+                 VerticalAlignment="Top"
+                 ItemsSource="{Binding CategoryFilters}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Content="{Binding Category}" IsChecked="{Binding Enabled}" Margin="5 5 0 0"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListView Margin="10,155,10,85"
                   x:Name="ExtractionListView"
                   Style="{DynamicResource GridStyle}"
                   ItemsSource="{Binding Path=ExtractedData}" />
 
         <TextBox
-            Margin="10,0,15,18"
+            Margin="10,0,10,44"
             Name="Information"
-            IsReadOnly="True" Height="65"
+            IsReadOnly="True" Height="36"
             VerticalAlignment="Bottom"
             Text="{Binding Information}" />
+        
+        <Button 
+            Content="Export" 
+            Margin="0,0,10,10" 
+            HorizontalAlignment="Right" 
+            Width="75" 
+            Height="29" 
+            VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

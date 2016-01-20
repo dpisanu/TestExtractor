@@ -53,9 +53,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\ExtractCommand.cs" />
     <Compile Include="Converters\NumberToBooleanConverter.cs" />
     <Compile Include="Interfaces\IExtractionGridViewModel.cs" />
     <Compile Include="Interfaces\IMainWindowViewModel.cs" />
+    <Compile Include="Interfaces\ICategoryFilterViewModel.cs" />
     <Compile Include="Interfaces\IViewModel.cs" />
     <Compile Include="Interfaces\INodeTypeFilterViewModel.cs" />
     <Compile Include="Interfaces\INodeTypeFiltersViewModel.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="ViewModel\ExtractionGridViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\CategoryFilterViewModel.cs" />
     <Compile Include="ViewModel\NodeTypeFilterViewModel.cs" />
     <Compile Include="ViewModel\NodeTypeFiltersViewModel.cs" />
     <Compile Include="ViewModel\ViewModel.cs" />
@@ -118,6 +121,10 @@
     <ProjectReference Include="..\Filter\Filter.csproj">
       <Project>{886E868B-C76C-4569-8094-E98A9FB16B78}</Project>
       <Name>Filter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Split\Split.csproj">
+      <Project>{509D52A8-9FB8-4C48-821E-0CEDB041D566}</Project>
+      <Name>Split</Name>
     </ProjectReference>
     <ProjectReference Include="..\Structure\Structure.csproj">
       <Project>{7156e258-9ca6-4d8b-b724-ff77d107ee89}</Project>
