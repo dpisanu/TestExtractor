@@ -1,7 +1,7 @@
-﻿<Window x:Class="ExtractorUi.MainWindow"
+﻿<Window x:Class="TestExtractor.ExtractorUi.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:converters="clr-namespace:ExtractorUi.Converters"
+        xmlns:converters="clr-namespace:TestExtractor.ExtractorUi.Converters"
         Title="MainWindow"
         Height="488"
         Width="795">
@@ -177,14 +177,29 @@
             IsReadOnly="True" Height="36"
             VerticalAlignment="Bottom"
             Text="{Binding Information}" />
-        
+
+        <Label 
+            Content="Package Size for Export" 
+            HorizontalAlignment="Right" 
+            Margin="0,0,151,10" 
+            VerticalAlignment="Bottom"/>
+        <TextBox 
+            HorizontalAlignment="Right" 
+            Height="23" 
+            Margin="0,0,90,13" 
+            TextWrapping="Wrap" 
+            Text="{Binding PackageSize}" 
+            VerticalAlignment="Bottom" 
+            Width="56"/>
         <Button 
             Content="Export" 
             Margin="0,0,10,10" 
             HorizontalAlignment="Right" 
             Width="75" 
             Height="29" 
-            VerticalAlignment="Bottom"/>
+            VerticalAlignment="Bottom"
+            Command="{Binding ExportCommand}"
+            CommandParameter="{Binding PackageSize}"/>
 
     </Grid>
 </Window>

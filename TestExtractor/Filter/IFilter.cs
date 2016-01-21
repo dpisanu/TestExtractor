@@ -2,7 +2,7 @@
 using TestExtractor.Structure;
 using TestExtractor.Structure.Enums;
 
-namespace TestExtractor.Extractor.Filter
+namespace TestExtractor.Filter
 {
     /// <summary>
     ///     Interface defining the API for a Filter Object

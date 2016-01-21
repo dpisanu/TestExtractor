@@ -7,8 +7,8 @@
     <ProjectGuid>{886E868B-C76C-4569-8094-E98A9FB16B78}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestExtractor.Extractor.Filter</RootNamespace>
-    <AssemblyName>TestExtractor.Extractor.Filter</AssemblyName>
+    <RootNamespace>TestExtractor.Filter</RootNamespace>
+    <AssemblyName>TestExtractor.Filter</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>

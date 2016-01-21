@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TestExtractor.Structure;
 
-namespace Split
+namespace TestExtractor.Split
 {
     internal class SplitPackage<T> : ISplitPackage<T> where T : INode
     {

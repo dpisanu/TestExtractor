@@ -1,40 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Input;
-using ExtractorUi.Commands;
-using ExtractorUi.Interfaces;
-using Microsoft.Win32;
-using TestExtractor.Extractor.Extractor;
-using TestExtractor.Extractor.Filter;
-using TestExtractor.Extractors.NUnit.Extractor;
+using TestExtractor.ExtractorUi.Commands;
+using TestExtractor.ExtractorUi.Interfaces;
 using TestExtractor.Structure;
 using TestExtractor.Structure.Enums;
 
-namespace ExtractorUi.ViewModel
+namespace TestExtractor.ExtractorUi.ViewModel
 {
     internal sealed class MainWindowViewModel : ViewModel, IMainWindowViewModel
     {
-        private static readonly string AmountOfFilesPropertyName = Reflection.PropertyName((IMainWindowViewModel vm) => vm.AmoutOfFiles);
         private static readonly string ExtractTestsPropertyName = Reflection.PropertyName((IMainWindowViewModel vm) => vm.ExtractTests);
         private static readonly string ExtractSuitsPropertyName = Reflection.PropertyName((IMainWindowViewModel vm) => vm.ExtractSuits);
-        private static readonly string InformationPropertyName = Reflection.PropertyName((IMainWindowViewModel vm) => vm.Information);
-
-        private readonly ICommand _extractCommand;
-        private readonly OpenFileDialog _fileDialog;
-        private readonly IFilter _filter;
+        
         private bool _extractSuits;
         private bool _extractTests;
         private string _information;
+        private string _packageSize;
+        private int _amoutOfFiles;
 
         public MainWindowViewModel()
         {
-            AddFilesCommand = new RelayCommand(AddFilesCommandExecute, AddFilesCommandCanExecute);
-            ExtractCommand = new RelayCommand(ExtractCommandCommandExecute, ExtractCommandCommandCanExecute);
+            AddFilesCommand = new AddFilesCommand(this);
+            ExtractCommand = new ExtractCommand(this);
+            ExportCommand = new ExportCommand(this);
+            FilterCommand = new FilterCommand(this);
+            PopulateCategoryFiltersCommand = new PopulateCategoryFiltersCommand(this);
 
-            Extractor = new NUnit();
             Files = new List<string>();
             ExtractedData = new ObservableCollection<INode>();
             ExtractedDataShadow = new List<INode>();
@@ -47,23 +41,23 @@ namespace ExtractorUi.ViewModel
                 NodeTypeFilters.Add(filter);
                 filter.PropertyChanged += delegate
                 {
-                    Filter();
-                    PopulateCategoryFilters();
+                    FilterCommand.Execute(null);
+                    PopulateCategoryFiltersCommand.Execute(null);
                 };
             }
-
-            _fileDialog = new OpenFileDialog {Multiselect = true};
-            _filter = new Filter();
-            _extractCommand = new ExtractCommand(this);
         }
-
-        public IExtractor Extractor { get; private set; }
-        public List<string> Files { get; private set; }
-        public List<INode> ExtractedDataShadow { get; set; }
+        
+        public List<string> Files { get; set; }
 
         public ICommand AddFilesCommand { get; private set; }
 
         public ICommand ExtractCommand { get; private set; }
+
+        public ICommand ExportCommand { get; private set; }
+
+        public ICommand FilterCommand { get; private set; }
+
+        public ICommand PopulateCategoryFiltersCommand { get; private set; }
 
         public bool ExtractTests
         {
@@ -89,14 +83,22 @@ namespace ExtractorUi.ViewModel
             }
         }
 
-        public string AmoutOfFiles
+        public int AmoutOfFiles
         {
-            get { return Files.Count.ToString(CultureInfo.InvariantCulture); }
+            get { return _amoutOfFiles; }
+            set
+            {
+                _amoutOfFiles = value;
+                OnPropertyChanged();
+            }
         }
 
         public ObservableCollection<INode> ExtractedData { get; set; }
 
+        public List<INode> ExtractedDataShadow { get; set; }
+
         public ObservableCollection<INodeTypeFilterViewModel> NodeTypeFilters { get; set; }
+
         public ObservableCollection<ICategoryFilterViewModel> CategoryFilters { get; set; }
 
         public string Information
@@ -105,74 +107,22 @@ namespace ExtractorUi.ViewModel
             set
             {
                 _information = value;
-                OnPropertyChanged(InformationPropertyName);
+                OnPropertyChanged();
             }
         }
 
-        private bool AddFilesCommandCanExecute(object o)
+        public string PackageSize
         {
-            return _fileDialog != null && Files != null;
-        }
-
-        private void AddFilesCommandExecute(object o)
-        {
-            _fileDialog.ShowDialog();
-            Files.AddRange(_fileDialog.FileNames);
-            OnPropertyChanged(AmountOfFilesPropertyName);
-        }
-
-        private bool ExtractCommandCommandCanExecute(object o)
-        {
-            return _extractCommand.CanExecute(o);
-        }
-
-        private void ExtractCommandCommandExecute(object o)
-        {
-            _extractCommand.Execute(o);
-
-            PopulateCategoryFilters();
-            Filter();
-        }
-
-        private void Filter()
-        {
-            ExtractedData.Clear();
-
-            // Node Types Filter
-            var nodeFilteredNodes = new List<INode>();
-            var nodeTypes = (from nodeTypeFilterViewModel in NodeTypeFilters
-                where nodeTypeFilterViewModel.Enabled
-                select nodeTypeFilterViewModel.NodeType).ToList();
-            nodeFilteredNodes.AddRange(_filter.FilterNodeTypes(ExtractedDataShadow, nodeTypes).OfFilters);
-
-            var categoryFilterNodes = new List<INode>();
-            var categories = (from categoryFilterViewModel in CategoryFilters
-                where categoryFilterViewModel.Enabled
-                select categoryFilterViewModel.Category).ToList();
-            categoryFilterNodes.AddRange(_filter.FilterCategories(nodeFilteredNodes, categories).OfFilters);
-
-            foreach (var filteredNode in categoryFilterNodes)
+            get { return _packageSize; }
+            set
             {
-                ExtractedData.Add(filteredNode);
+                _packageSize = value;
+                OnPropertyChanged();
             }
         }
 
-        private void PopulateCategoryFilters()
-        {
-            CategoryFilters.Clear();
+        #region Private 
 
-            var categories = new List<string>();
-            foreach (var node in ExtractedDataShadow)
-            {
-                categories.AddRange(node.Categories);
-            }
-            categories.Add(string.Empty);
-
-            foreach (var categoryFilter in categories.Distinct().Select(category => new CategoryFilterViewModel(category)))
-            {
-                CategoryFilters.Add(categoryFilter);
-                categoryFilter.PropertyChanged += delegate { Filter(); };
-            }
-        }
+        #endregion
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using TestExtractor.Structure;
 
-namespace ExtractorUi.Interfaces
+namespace TestExtractor.ExtractorUi.Interfaces
 {
     internal interface IExtractionGridViewModel : IList<INode>, IViewModel
     {

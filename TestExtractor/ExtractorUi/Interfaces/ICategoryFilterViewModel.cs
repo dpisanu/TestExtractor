@@ -1,4 +1,4 @@
-﻿namespace ExtractorUi.Interfaces
+﻿namespace TestExtractor.ExtractorUi.Interfaces
 {
     internal interface ICategoryFilterViewModel : IViewModel
     {

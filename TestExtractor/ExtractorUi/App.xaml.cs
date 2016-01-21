@@ -1,4 +1,4 @@
-﻿namespace ExtractorUi
+﻿namespace TestExtractor.ExtractorUi
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Data;
 
-namespace ExtractorUi.Converters
+namespace TestExtractor.ExtractorUi.Converters
 {
     internal class NumberToBooleanConverter : IValueConverter
     {

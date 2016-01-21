@@ -1,6 +1,6 @@
 ﻿using TestExtractor.Structure.Enums;
 
-namespace ExtractorUi.Interfaces
+namespace TestExtractor.ExtractorUi.Interfaces
 {
     internal interface INodeTypeFilterViewModel : IViewModel
     {

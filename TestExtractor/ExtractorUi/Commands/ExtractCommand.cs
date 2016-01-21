@@ -2,28 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
-using ExtractorUi.ViewModel;
+using TestExtractor.Extractor.Extractor;
+using TestExtractor.Extractors.NUnit.Extractor;
+using TestExtractor.ExtractorUi.ViewModel;
 using TestExtractor.Structure;
 
-namespace ExtractorUi.Commands
+namespace TestExtractor.ExtractorUi.Commands
 {
     internal class ExtractCommand : ICommand
     {
         private readonly MainWindowViewModel _mainWindowViewModel;
+        private readonly IExtractor _extractor;
 
         internal ExtractCommand(MainWindowViewModel mainWindowViewModel)
         {
             _mainWindowViewModel = mainWindowViewModel;
+            _extractor = new NUnit();
         }
 
         public bool CanExecute(object parameter)
         {
-            if (_mainWindowViewModel == null)
-            {
-                return false;
-            }
-
-            return _mainWindowViewModel.Files.Any();
+            return _mainWindowViewModel != null && _mainWindowViewModel.Files.Any();
         }
 
         public void Execute(object parameter)
@@ -38,15 +37,13 @@ namespace ExtractorUi.Commands
 
             if (_mainWindowViewModel.ExtractTests)
             {
-                Tuple<IList<IStubNode>, TimeSpan> result =
-                    _mainWindowViewModel.Extractor.ExtractTimed<IStubNode>(_mainWindowViewModel.Files);
+                var result = _extractor.ExtractTimed<IStubNode>(_mainWindowViewModel.Files);
                 span = result.Item2;
                 nodes = new List<INode>(result.Item1);
             }
             if (_mainWindowViewModel.ExtractSuits)
             {
-                Tuple<IList<ISuiteNode>, TimeSpan> result =
-                    _mainWindowViewModel.Extractor.ExtractTimed<ISuiteNode>(_mainWindowViewModel.Files);
+                var result = _extractor.ExtractTimed<ISuiteNode>(_mainWindowViewModel.Files);
                 span = result.Item2;
                 nodes = new List<INode>(result.Item1);
             }
@@ -62,8 +59,15 @@ namespace ExtractorUi.Commands
                 _mainWindowViewModel.ExtractedData.Add(node);
             }
             _mainWindowViewModel.ExtractedDataShadow.AddRange(nodes);
+
+            _mainWindowViewModel.PopulateCategoryFiltersCommand.Execute(null);
+            _mainWindowViewModel.FilterCommand.Execute(null);
         }
 
-        public event EventHandler CanExecuteChanged;
+        public event EventHandler CanExecuteChanged
+        {
+            add { CommandManager.RequerySuggested += value; }
+            remove { CommandManager.RequerySuggested -= value; }
+        }
     }
 }

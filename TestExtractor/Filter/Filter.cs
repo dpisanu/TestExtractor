@@ -4,7 +4,7 @@ using System.Linq;
 using TestExtractor.Structure;
 using TestExtractor.Structure.Enums;
 
-namespace TestExtractor.Extractor.Filter
+namespace TestExtractor.Filter
 {
     /// <summary>
     ///     Concrete Implementation of the Filter Class

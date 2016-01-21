@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using ExtractorUi.Interfaces;
+using TestExtractor.ExtractorUi.Interfaces;
 using TestExtractor.Structure;
 
-namespace ExtractorUi.ViewModel
+namespace TestExtractor.ExtractorUi.ViewModel
 {
     internal sealed class ExtractionGridViewModel : ViewModel, IExtractionGridViewModel
     {

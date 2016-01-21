@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace ExtractorUi
+namespace TestExtractor.ExtractorUi
 {
     public static class Reflection
     {

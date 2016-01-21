@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ExtractorUi.Interfaces
+namespace TestExtractor.ExtractorUi.Interfaces
 {
     public interface IViewModel : INotifyPropertyChanged
     {

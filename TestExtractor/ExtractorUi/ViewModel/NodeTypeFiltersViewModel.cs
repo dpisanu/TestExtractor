@@ -2,10 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using ExtractorUi.Interfaces;
+using TestExtractor.ExtractorUi.Interfaces;
 using TestExtractor.Structure.Enums;
 
-namespace ExtractorUi.ViewModel
+namespace TestExtractor.ExtractorUi.ViewModel
 {
     internal sealed class NodeTypeFiltersViewModel : ViewModel, INodeTypeFiltersViewModel
     {

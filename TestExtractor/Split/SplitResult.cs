@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TestExtractor.Structure;
 
-namespace Split
+namespace TestExtractor.Split
 {
     internal class SplitResult<T> : ISplitResult<T> where T : INode
     {
@@ -18,9 +18,9 @@ namespace Split
             _internalList.Add(result);
         }
 
-        public IEnumerator<ISplitResult<T>> GetEnumerator()
+        public IEnumerator<ISplitPackage<T>> GetEnumerator()
         {
-            throw new System.NotImplementedException();
+            return _internalList.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

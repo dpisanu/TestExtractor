@@ -1,6 +1,6 @@
-﻿using ExtractorUi.Interfaces;
+﻿using TestExtractor.ExtractorUi.Interfaces;
 
-namespace ExtractorUi.ViewModel
+namespace TestExtractor.ExtractorUi.ViewModel
 {
     internal sealed class CategoryFilterViewModel : ViewModel, ICategoryFilterViewModel
     {

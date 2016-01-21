@@ -2,7 +2,7 @@
 using System.Linq;
 using TestExtractor.Structure;
 
-namespace Split
+namespace TestExtractor.Split
 {
     public static class Split
     {
