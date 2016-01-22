@@ -10,18 +10,30 @@ using TestExtractor.Structure.Enums;
 
 namespace TestExtractor.ExtractorUi.ViewModel
 {
+    /// <summary>
+    ///     Concrete implementation of the Main Window View Model
+    ///     Inherrits Class : <see cref="ViewModel" />
+    ///     Implements Interface : <see cref="IMainWindowViewModel" />
+    /// </summary>
     internal sealed class MainWindowViewModel : ViewModel, IMainWindowViewModel
     {
-        private static readonly string ExtractTestsPropertyName = Reflection.PropertyName((IMainWindowViewModel vm) => vm.ExtractTests);
-        private static readonly string ExtractSuitsPropertyName = Reflection.PropertyName((IMainWindowViewModel vm) => vm.ExtractSuits);
-        
+        private static readonly string ExtractTestsPropertyName =
+            Reflection.PropertyName((IMainWindowViewModel vm) => vm.ExtractTests);
+
+        private static readonly string ExtractSuitsPropertyName =
+            Reflection.PropertyName((IMainWindowViewModel vm) => vm.ExtractSuits);
+
+        private int _amoutOfFiles;
+
         private bool _extractSuits;
         private bool _extractTests;
         private string _information;
         private string _packageSize;
-        private int _amoutOfFiles;
 
-        public MainWindowViewModel()
+        /// <summary>
+        ///     Created a new instance of <see cref="MainWindowViewModel" />
+        /// </summary>
+        internal MainWindowViewModel()
         {
             AddFilesCommand = new AddFilesCommand(this);
             ExtractCommand = new ExtractCommand(this);
@@ -36,7 +48,11 @@ namespace TestExtractor.ExtractorUi.ViewModel
             CategoryFilters = new ObservableCollection<ICategoryFilterViewModel>();
             ExtractSuits = true;
 
-            foreach (var filter in Enum.GetValues(typeof (NodeTypes)) .Cast<NodeTypes>().Select(nodeType => new NodeTypeFilterViewModel(nodeType)))
+            foreach (
+                NodeTypeFilterViewModel filter in
+                    Enum.GetValues(typeof (NodeTypes))
+                        .Cast<NodeTypes>()
+                        .Select(nodeType => new NodeTypeFilterViewModel(nodeType)))
             {
                 NodeTypeFilters.Add(filter);
                 filter.PropertyChanged += delegate
@@ -46,19 +62,45 @@ namespace TestExtractor.ExtractorUi.ViewModel
                 };
             }
         }
-        
+
+        /// <summary>
+        ///     List of Files
+        /// </summary>
         public List<string> Files { get; set; }
 
-        public ICommand AddFilesCommand { get; private set; }
-
-        public ICommand ExtractCommand { get; private set; }
-
-        public ICommand ExportCommand { get; private set; }
-
-        public ICommand FilterCommand { get; private set; }
-
+        /// <summary>
+        ///     Command to Populate the Category Filters
+        /// </summary>
         public ICommand PopulateCategoryFiltersCommand { get; private set; }
 
+        /// <summary>
+        ///     Extracted Data Shadow
+        /// </summary>
+        public List<INode> ExtractedDataShadow { get; set; }
+
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.AddFilesCommand" />
+        /// </summary>
+        public ICommand AddFilesCommand { get; private set; }
+
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.ExtractCommand" />
+        /// </summary>
+        public ICommand ExtractCommand { get; private set; }
+
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.ExportCommand" />
+        /// </summary>
+        public ICommand ExportCommand { get; private set; }
+
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.FilterCommand" />
+        /// </summary>
+        public ICommand FilterCommand { get; private set; }
+
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.ExtractTests" />
+        /// </summary>
         public bool ExtractTests
         {
             get { return _extractTests; }
@@ -71,6 +113,9 @@ namespace TestExtractor.ExtractorUi.ViewModel
             }
         }
 
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.ExtractSuits" />
+        /// </summary>
         public bool ExtractSuits
         {
             get { return _extractSuits; }
@@ -83,6 +128,9 @@ namespace TestExtractor.ExtractorUi.ViewModel
             }
         }
 
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.AmoutOfFiles" />
+        /// </summary>
         public int AmoutOfFiles
         {
             get { return _amoutOfFiles; }
@@ -93,14 +141,24 @@ namespace TestExtractor.ExtractorUi.ViewModel
             }
         }
 
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.ExtractedData" />
+        /// </summary>
         public ObservableCollection<INode> ExtractedData { get; set; }
 
-        public List<INode> ExtractedDataShadow { get; set; }
-
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.NodeTypeFilters" />
+        /// </summary>
         public ObservableCollection<INodeTypeFilterViewModel> NodeTypeFilters { get; set; }
 
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.CategoryFilters" />
+        /// </summary>
         public ObservableCollection<ICategoryFilterViewModel> CategoryFilters { get; set; }
 
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.Information" />
+        /// </summary>
         public string Information
         {
             get { return _information; }
@@ -111,6 +169,9 @@ namespace TestExtractor.ExtractorUi.ViewModel
             }
         }
 
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.PackageSize" />
+        /// </summary>
         public string PackageSize
         {
             get { return _packageSize; }
@@ -120,9 +181,5 @@ namespace TestExtractor.ExtractorUi.ViewModel
                 OnPropertyChanged();
             }
         }
-
-        #region Private 
-
-        #endregion
     }
 }

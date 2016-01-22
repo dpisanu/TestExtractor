@@ -3,7 +3,10 @@ using System.Linq.Expressions;
 
 namespace TestExtractor.ExtractorUi
 {
-    public static class Reflection
+    /// <summary>
+    ///     Static class providing some Reflection Methods
+    /// </summary>
+    internal static class Reflection
     {
         /// <summary>
         ///     Returns the name of a property
@@ -14,7 +17,7 @@ namespace TestExtractor.ExtractorUi
         /// <returns> The name of the property </returns>
         public static string PropertyName<TSource, TProperty>(Expression<Func<TSource, TProperty>> funcExpression)
         {
-            var property = (MemberExpression)funcExpression.Body;
+            var property = (MemberExpression) funcExpression.Body;
             return property.Member.Name;
         }
     }

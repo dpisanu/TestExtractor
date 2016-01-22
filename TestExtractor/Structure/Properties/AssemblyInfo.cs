@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Structure")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Test Extractor : Structure")]
+[assembly: AssemblyDescription("Test Extractor Structure definition of Unit Test Classes and Test Stubs")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Structure")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyProduct("Test Extractor")]
+[assembly: AssemblyCopyright("Apache License 2.0 & The MIT License (MIT)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

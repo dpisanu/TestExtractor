@@ -8,25 +8,31 @@ using TestExtractor.ExtractorUi.ViewModel;
 
 namespace TestExtractor.ExtractorUi.Commands
 {
+    /// <summary>
+    ///     Command Class that handles the Exporting the List to files
+    ///     Implements Interface : <see cref="ICommand" />
+    /// </summary>
     internal class ExportCommand : ICommand
     {
         private readonly SaveFileDialog _fileDialog;
         private readonly MainWindowViewModel _mainWindowViewModel;
 
+        /// <summary>
+        ///     Created a new instance of <see cref="ExportCommand" />
+        /// </summary>
+        /// <param name="mainWindowViewModel"><see cref="MainWindowViewModel"/> to work on</param>
         internal ExportCommand(MainWindowViewModel mainWindowViewModel)
         {
             _mainWindowViewModel = mainWindowViewModel;
             _fileDialog = new SaveFileDialog();
         }
 
+        /// <summary>
+        ///     Implements <see cref="ICommand.CanExecute" />
+        /// </summary>
         public bool CanExecute(object parameter)
         {
-            if (_mainWindowViewModel == null)
-            {
-                return false;
-            }
-
-            if (_fileDialog == null)
+            if (_mainWindowViewModel == null || _fileDialog == null)
             {
                 return false;
             }
@@ -34,6 +40,9 @@ namespace TestExtractor.ExtractorUi.Commands
             return _mainWindowViewModel.ExtractedData.Any();
         }
 
+        /// <summary>
+        ///     Implements <see cref="ICommand.Execute" />
+        /// </summary>
         public void Execute(object parameter)
         {
             int packageSize;
@@ -72,19 +81,28 @@ namespace TestExtractor.ExtractorUi.Commands
             }
         }
 
+        /// <summary>
+        ///     Implements <see cref="ICommand.CanExecuteChanged" />
+        /// </summary>
         public event EventHandler CanExecuteChanged
         {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        private bool ParseNumber(object parameter, out int packageSize)
+        /// <summary>
+        ///     Unbox an object to a number
+        /// </summary>
+        /// <param name="parameter">Object parameter</param>
+        /// <param name="number">Number as an out parameter</param>
+        /// <returns><c>true</c> if unboxing to number worked. <c>false</c> if it fails</returns>
+        private static bool ParseNumber(object parameter, out int number)
         {
-            packageSize = 0;
+            number = 0;
             bool parseWorked;
             try
             {
-                parseWorked = int.TryParse(Convert.ToString(parameter, CultureInfo.InvariantCulture), out packageSize);
+                parseWorked = int.TryParse(Convert.ToString(parameter, CultureInfo.InvariantCulture), out number);
             }
             catch
             {

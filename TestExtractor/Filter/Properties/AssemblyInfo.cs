@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Filter")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Test Extractor : Filter")]
+[assembly: AssemblyDescription("Test Extractor Filter Mechanism to Filter Extracted Tests by different criteria")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Filter")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyProduct("Test Extractor")]
+[assembly: AssemblyCopyright("Apache License 2.0 & The MIT License (MIT)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -4,42 +4,36 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4EAC22FC-1DCB-4D54-94B3-3FEE9CDC8342}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{6E7A5C29-4C73-4E37-B577-94BD7AC4D829}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestExtractor.Extractors.NUnit</RootNamespace>
-    <AssemblyName>TestExtractor.Extractors.NUnit</AssemblyName>
+    <RootNamespace>TestExtractor.Client.ExtractorCli</RootNamespace>
+    <AssemblyName>TestExtractor.Client.ExtractorCli</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\bin\</OutputPath>
+    <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\bin\</OutputPath>
+    <OutputPath>..\..\bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.core, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\3rdParty\NUnit 2.6.3\bin\lib\nunit.core.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.core.interfaces">
-      <HintPath>..\..\..\3rdParty\NUnit 2.6.3\bin\lib\nunit.core.interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.util">
-      <HintPath>..\..\..\3rdParty\NUnit 2.6.3\bin\lib\nunit.util.dll</HintPath>
+    <Reference Include="NDesk.Options">
+      <HintPath>..\..\3rdParty\NDesk\NDesk.Options.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,28 +44,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Extractor\NUnit.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Structure\Node.cs" />
-    <Compile Include="Structure\NodeName.cs" />
-    <Compile Include="Structure\StubNode.cs" />
-    <Compile Include="Structure\SuiteNode.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Extractor\Extractor.csproj">
-      <Project>{84065744-b8fc-4381-a196-36dba930c3e3}</Project>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TestExtractor\Extractors\NUnit\NUnit.csproj">
+      <Project>{4eac22fc-1dcb-4d54-94b3-3fee9cdc8342}</Project>
+      <Name>NUnit</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TestExtractor\Extractor\Extractor.csproj">
+      <Project>{84065744-B8FC-4381-A196-36DBA930C3E3}</Project>
       <Name>Extractor</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Filter\Filter.csproj">
-      <Project>{886e868b-c76c-4569-8094-e98a9fb16b78}</Project>
+    <ProjectReference Include="..\..\TestExtractor\Filter\Filter.csproj">
+      <Project>{886E868B-C76C-4569-8094-E98A9FB16B78}</Project>
       <Name>Filter</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Structure\Structure.csproj">
-      <Project>{7156e258-9ca6-4d8b-b724-ff77d107ee89}</Project>
+    <ProjectReference Include="..\..\TestExtractor\Split\Split.csproj">
+      <Project>{509d52a8-9fb8-4c48-821e-0cedb041d566}</Project>
+      <Name>Split</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\TestExtractor\Structure\Structure.csproj">
+      <Project>{7156E258-9CA6-4D8B-B724-FF77D107EE89}</Project>
       <Name>Structure</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

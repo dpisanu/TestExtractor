@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("NUnit")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Test Extractor : NUnit Extractor")]
+[assembly: AssemblyDescription("Test Extractor Concrete Extraction Implementation for NUnit Test Assemblies")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NUnit")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyProduct("Test Extractor")]
+[assembly: AssemblyCopyright("Apache License 2.0 & The MIT License (MIT)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

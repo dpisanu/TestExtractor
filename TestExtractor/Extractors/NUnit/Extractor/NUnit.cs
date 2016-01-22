@@ -76,6 +76,11 @@ namespace TestExtractor.Extractors.NUnit.Extractor
             ServiceManager.Services.ClearServices();
         }
 
+        /// <summary>
+        /// Callback Method for the TestLoaded Event
+        /// </summary>
+        /// <param name="sender">Sender that triggered the event</param>
+        /// <param name="args"><see cref="TestEventArgs"/> of the Event</param>
         private static void NodeLoadEvent(object sender, TestEventArgs args)
         {
             var test = args.Test as TestNode;
@@ -85,6 +90,12 @@ namespace TestExtractor.Extractors.NUnit.Extractor
             }
         }
 
+        /// <summary>
+        /// Function that is called when a new Node is loaded.
+        /// Checks the <see cref="TestNode.IsSuite"/> Property.
+        /// Depending on the value it adds a <see cref="SuiteNode"/> or a <see cref="StubNode"/>
+        /// </summary>
+        /// <param name="node"><see cref="TestNode"/> to be added</param>
         private static void AddNode(TestNode node)
         {
             if (node.IsSuite)

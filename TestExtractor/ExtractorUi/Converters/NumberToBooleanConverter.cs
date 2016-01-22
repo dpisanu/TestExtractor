@@ -1,13 +1,21 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows.Data;
 
 namespace TestExtractor.ExtractorUi.Converters
 {
+    /// <summary>
+    ///     A Number to Boolean Converter Class
+    ///     Implements Interface : <see cref="IValueConverter" />
+    /// </summary>
     internal class NumberToBooleanConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        /// <summary>
+        ///     Implements <see cref="IValueConverter.Convert" />
+        /// </summary>
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var number = 0;
+            int number = 0;
 
             try
             {
@@ -20,12 +28,17 @@ namespace TestExtractor.ExtractorUi.Converters
             if (number == 0)
             {
                 return false;
-
             }
             return true;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        /// <summary>
+        ///     Implements <see cref="IValueConverter.ConvertBack" />
+        /// </summary>
+        /// <remarks>
+        ///     Throws a <see cref="NotImplementedException" />
+        /// </remarks>
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException("Not immplemented Exception");
         }

@@ -7,6 +7,7 @@ namespace TestExtractor.Time
     ///     Concrete Time Measurement Implementation Class
     ///     Implements Interface : <see cref="ITime" />
     /// </summary>
+    [Serializable]
     public class Time : ITime
     {
         private readonly Stopwatch _stopwatch;

@@ -99,6 +99,9 @@ namespace TestExtractor.Extractor.Extractor
             return new Tuple<IList<T>, TimeSpan>(extractResult, time.Elapsed);
         }
 
+        /// <summary>
+        ///     Abstract Extract Method to be implemented by concrete Extraction Classes.
+        /// </summary>
         protected abstract void Extract();
     }
 }

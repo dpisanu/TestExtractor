@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Split")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Test Extractor : Split")]
+[assembly: AssemblyDescription("Test Extractor Split Mechanism to Split a set of Extracted Unit Tests into a list of smaller chunksFilter Mechanism to Filter Extracted Tests by different criteri")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Split")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyProduct("Test Extractor")]
+[assembly: AssemblyCopyright("Apache License 2.0 & The MIT License (MIT)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

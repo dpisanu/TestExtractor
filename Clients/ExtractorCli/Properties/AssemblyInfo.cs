@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Test Extractor : Time")]
-[assembly: AssemblyDescription("Test Extractor Time Object to Stopwatch Operations")]
+[assembly: AssemblyTitle("Test Extractor : Extractor Cli")]
+[assembly: AssemblyDescription("Test Extractor Extraction Cli to provide a Demo on how to use the Extraction Toolchain")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Test Extractor")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("345c88c9-78ef-48c2-9ad7-f56e8c1d4b3d")]
+[assembly: Guid("cda119aa-e4d2-4c0d-98dd-8c4d128785ec")]
 
 // Version information for an assembly consists of the following four values:
 //

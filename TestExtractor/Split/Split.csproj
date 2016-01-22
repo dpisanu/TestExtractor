@@ -47,12 +47,6 @@
     <Compile Include="SplitPackage.cs" />
     <Compile Include="SplitResult.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Structure\Structure.csproj">
-      <Project>{7156E258-9CA6-4D8B-B724-FF77D107EE89}</Project>
-      <Name>Structure</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

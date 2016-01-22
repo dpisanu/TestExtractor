@@ -13,6 +13,11 @@ namespace TestExtractor.ExtractorUi.Commands
         private readonly Action<object> _executeAction;
         private EventHandler _canExecuteChangedEventHandler;
 
+        /// <summary>
+        ///     Created a new instance of <see cref="RelayCommand" />
+        /// </summary>
+        /// <param name="execute">Execute <see cref="Action" /></param>
+        /// <param name="canExecute">CanExecute <see cref="Predicate{t}" /></param>
         public RelayCommand(Action<object> execute, Predicate<object> canExecute)
         {
             if (execute == null)
@@ -30,6 +35,30 @@ namespace TestExtractor.ExtractorUi.Commands
         }
 
         /// <summary>
+        ///     Implements <see cref="ICommand.CanExecute" />
+        ///     Run the CanExecute <see cref="Predicate{t}" />
+        /// </summary>
+        public bool CanExecute(object parameter)
+        {
+            if (_canExecutePredicate == null)
+            {
+                return false;
+            }
+
+            return _canExecutePredicate == null || _canExecutePredicate(parameter);
+        }
+
+        /// <summary>
+        ///     Implements <see cref="ICommand.Execute" />
+        ///     Run the Execute <see cref="Action" />
+        /// </summary>
+        public void Execute(object parameter)
+        {
+            _executeAction(parameter);
+        }
+
+        /// <summary>
+        ///     Implements <see cref="ICommand.CanExecuteChanged" />
         ///     An event that is fired when CanExecute changes
         /// </summary>
         public event EventHandler CanExecuteChanged
@@ -41,27 +70,9 @@ namespace TestExtractor.ExtractorUi.Commands
             }
             remove
             {
-                if (_canExecuteChangedEventHandler != null)
-                {
-                    _canExecuteChangedEventHandler -= value;
-                }
+                _canExecuteChangedEventHandler -= value;
                 CommandManager.RequerySuggested -= value;
             }
-        }
-
-        public bool CanExecute(object parameter)
-        {
-            if (_canExecutePredicate == null)
-            {
-                return false;
-            }
-
-            return _canExecutePredicate == null || _canExecutePredicate(parameter);
-        }
-
-        public void Execute(object parameter)
-        {
-            _executeAction(parameter);
         }
     }
 }
