@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4A4C4192-04C2-4BA0-AD42-7942E3E7E06B}</ProjectGuid>
+    <ProjectGuid>{EFFF27B6-9782-44B8-BECA-BFB78F0FF46B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TestExtractor.ExtractorUi</RootNamespace>
-    <AssemblyName>TestExtractor.ExtractorUi</AssemblyName>
+    <RootNamespace>TestExtractor.Client.ExtractorUi</RootNamespace>
+    <AssemblyName>TestExtractor.Client.ExtractorUi</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -116,23 +116,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Extractors\NUnit\NUnit.csproj">
+    <ProjectReference Include="..\..\TestExtractor\Extractors\NUnit\NUnit.csproj">
       <Project>{4eac22fc-1dcb-4d54-94b3-3fee9cdc8342}</Project>
       <Name>NUnit</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Extractor\Extractor.csproj">
+    <ProjectReference Include="..\..\TestExtractor\Extractor\Extractor.csproj">
       <Project>{84065744-b8fc-4381-a196-36dba930c3e3}</Project>
       <Name>Extractor</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Filter\Filter.csproj">
+    <ProjectReference Include="..\..\TestExtractor\Filter\Filter.csproj">
       <Project>{886E868B-C76C-4569-8094-E98A9FB16B78}</Project>
       <Name>Filter</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Split\Split.csproj">
+    <ProjectReference Include="..\..\TestExtractor\Split\Split.csproj">
       <Project>{509D52A8-9FB8-4C48-821E-0CEDB041D566}</Project>
       <Name>Split</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Structure\Structure.csproj">
+    <ProjectReference Include="..\..\TestExtractor\Structure\Structure.csproj">
       <Project>{7156e258-9ca6-4d8b-b724-ff77d107ee89}</Project>
       <Name>Structure</Name>
     </ProjectReference>

@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows.Data;
 
-namespace TestExtractor.ExtractorUi.Converters
+namespace TestExtractor.Client.ExtractorUi.Converters
 {
     /// <summary>
     ///     A Number to Boolean Converter Class
