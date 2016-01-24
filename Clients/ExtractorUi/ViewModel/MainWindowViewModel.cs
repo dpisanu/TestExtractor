@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
-using TestExtractor.ExtractorUi.Commands;
-using TestExtractor.ExtractorUi.Interfaces;
+using TestExtractor.Client.ExtractorUi.Commands;
+using TestExtractor.Client.ExtractorUi.Interfaces;
+using TestExtractor.ExtractorUi;
 using TestExtractor.Structure;
 using TestExtractor.Structure.Enums;
 
-namespace TestExtractor.ExtractorUi.ViewModel
+namespace TestExtractor.Client.ExtractorUi.ViewModel
 {
     /// <summary>
     ///     Concrete implementation of the Main Window View Model
-    ///     Inherrits Class : <see cref="ViewModel" />
-    ///     Implements Interface : <see cref="IMainWindowViewModel" />
+    ///     Inherrits Class : <see cref="IMainWindowViewModel" />
+    ///     Implements Interface : <see cref="ViewModel" />
     /// </summary>
-    internal sealed class MainWindowViewModel : ViewModel, IMainWindowViewModel
+    internal sealed class MainWindowViewModel : Client.ExtractorUi.ViewModel.ViewModel, IMainWindowViewModel
     {
         private static readonly string ExtractTestsPropertyName =
             Reflection.PropertyName((IMainWindowViewModel vm) => vm.ExtractTests);

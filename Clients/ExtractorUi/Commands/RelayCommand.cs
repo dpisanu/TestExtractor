@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace TestExtractor.ExtractorUi.Commands
+namespace TestExtractor.Client.ExtractorUi.Commands
 {
     /// <summary>
     ///     A Relaying Command construct as described in the Microsoft MVVM Documentation

@@ -2,7 +2,7 @@
 using System.Collections.Specialized;
 using TestExtractor.Structure;
 
-namespace TestExtractor.ExtractorUi.Interfaces
+namespace TestExtractor.Client.ExtractorUi.Interfaces
 {
     /// <summary>
     ///     Interface specifying the API of the Extraction Grid View Model

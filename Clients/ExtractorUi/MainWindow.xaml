@@ -1,4 +1,4 @@
-﻿<Window x:Class="TestExtractor.ExtractorUi.MainWindow"
+﻿<Window x:Class="TestExtractor.Client.ExtractorUi.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:converters="clr-namespace:TestExtractor.Client.ExtractorUi.Converters"

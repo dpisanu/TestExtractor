@@ -1,6 +1,6 @@
 ﻿using TestExtractor.Structure.Enums;
 
-namespace TestExtractor.ExtractorUi.Interfaces
+namespace TestExtractor.Client.ExtractorUi.Interfaces
 {
     /// <summary>
     ///     Interface specifying the API of the Node Type Filter View Model

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace TestExtractor.ExtractorUi.Interfaces
+namespace TestExtractor.Client.ExtractorUi.Interfaces
 {
     /// <summary>
     ///     Interface specifying the API of the View Model

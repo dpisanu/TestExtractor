@@ -1,7 +1,7 @@
-﻿using TestExtractor.ExtractorUi.Interfaces;
-using TestExtractor.ExtractorUi.ViewModel;
+﻿using TestExtractor.Client.ExtractorUi.Interfaces;
+using TestExtractor.Client.ExtractorUi.ViewModel;
 
-namespace TestExtractor.ExtractorUi
+namespace TestExtractor.Client.ExtractorUi
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml

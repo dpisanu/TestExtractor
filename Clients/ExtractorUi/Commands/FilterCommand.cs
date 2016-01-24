@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Input;
-using TestExtractor.ExtractorUi.ViewModel;
+using TestExtractor.Client.ExtractorUi.ViewModel;
 using TestExtractor.Filter;
 using TestExtractor.Structure;
 
-namespace TestExtractor.ExtractorUi.Commands
+namespace TestExtractor.Client.ExtractorUi.Commands
 {
     /// <summary>
     ///     Command Class that handles the Filtering of the extraced Unit Test List by specific criterias

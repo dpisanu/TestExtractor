@@ -2,7 +2,7 @@
 using System.Windows.Input;
 using TestExtractor.Structure;
 
-namespace TestExtractor.ExtractorUi.Interfaces
+namespace TestExtractor.Client.ExtractorUi.Interfaces
 {
     /// <summary>
     ///     Interface specifying the API of the Main Window View Model

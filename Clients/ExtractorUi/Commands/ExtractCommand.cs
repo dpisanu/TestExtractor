@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
+using TestExtractor.Client.ExtractorUi.ViewModel;
 using TestExtractor.Extractor;
 using TestExtractor.Extractor.Extractor;
 using TestExtractor.Extractors.NUnit.Extractor;
-using TestExtractor.ExtractorUi.ViewModel;
 using TestExtractor.Structure;
 
-namespace TestExtractor.ExtractorUi.Commands
+namespace TestExtractor.Client.ExtractorUi.Commands
 {
     /// <summary>
     ///     Command Class that Extracting of Unit Tests

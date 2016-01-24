@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using TestExtractor.ExtractorUi.Interfaces;
+using TestExtractor.Client.ExtractorUi.Interfaces;
 
-namespace TestExtractor.ExtractorUi.ViewModel
+namespace TestExtractor.Client.ExtractorUi.ViewModel
 {
     /// <summary>
     ///     Abstract Implementation of a ViewModel Base

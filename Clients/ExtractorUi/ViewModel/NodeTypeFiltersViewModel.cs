@@ -2,17 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using TestExtractor.ExtractorUi.Interfaces;
+using TestExtractor.Client.ExtractorUi.Interfaces;
 using TestExtractor.Structure.Enums;
 
-namespace TestExtractor.ExtractorUi.ViewModel
+namespace TestExtractor.Client.ExtractorUi.ViewModel
 {
     /// <summary>
     ///     Concrete implementation of the Node Type Filters View Model
-    ///     Inherrits Class : <see cref="ViewModel" />
-    ///     Implements Interface : <see cref="INodeTypeFiltersViewModel" />
+    ///     Inherrits Class : <see cref="INodeTypeFiltersViewModel" />
+    ///     Implements Interface : <see cref="ViewModel" />
     /// </summary>
-    internal sealed class NodeTypeFiltersViewModel : ViewModel, INodeTypeFiltersViewModel
+    internal sealed class NodeTypeFiltersViewModel : Client.ExtractorUi.ViewModel.ViewModel, INodeTypeFiltersViewModel
     {
         /// <summary>
         ///     Created a new instance of <see cref="NodeTypeFiltersViewModel" />

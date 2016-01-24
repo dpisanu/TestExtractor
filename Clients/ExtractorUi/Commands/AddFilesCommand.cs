@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Microsoft.Win32;
-using TestExtractor.ExtractorUi.ViewModel;
+using TestExtractor.Client.ExtractorUi.ViewModel;
 
-namespace TestExtractor.ExtractorUi.Commands
+namespace TestExtractor.Client.ExtractorUi.Commands
 {
     /// <summary>
     ///     Command Class that handles the Adding of Files

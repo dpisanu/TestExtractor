@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
-using TestExtractor.ExtractorUi.Interfaces;
+using TestExtractor.Client.ExtractorUi.Interfaces;
 using TestExtractor.Structure;
 
-namespace TestExtractor.ExtractorUi.ViewModel
+namespace TestExtractor.Client.ExtractorUi.ViewModel
 {
     /// <summary>
     ///     Concrete implementation of the Extraction Grid View Model
-    ///     Inherrits Class : <see cref="ViewModel" />
-    ///     Implements Interface : <see cref="IExtractionGridViewModel" />
+    ///     Inherrits Class : <see cref="IExtractionGridViewModel" />
+    ///     Implements Interface : <see cref="ViewModel" />
     /// </summary>
-    internal sealed class ExtractionGridViewModel : ViewModel, IExtractionGridViewModel
+    internal sealed class ExtractionGridViewModel : Client.ExtractorUi.ViewModel.ViewModel, IExtractionGridViewModel
     {
         /// <summary>
         ///     Created a new instance of <see cref="ExtractionGridViewModel" />

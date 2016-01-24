@@ -1,14 +1,14 @@
-﻿using TestExtractor.ExtractorUi.Interfaces;
+﻿using TestExtractor.Client.ExtractorUi.Interfaces;
 using TestExtractor.Structure.Enums;
 
-namespace TestExtractor.ExtractorUi.ViewModel
+namespace TestExtractor.Client.ExtractorUi.ViewModel
 {
     /// <summary>
     ///     Concrete implementation of the a Node Type Filer View Model
-    ///     Inherrits Class : <see cref="ViewModel" />
-    ///     Implements Interface : <see cref="INodeTypeFilterViewModel" />
+    ///     Inherrits Class : <see cref="INodeTypeFilterViewModel" />
+    ///     Implements Interface : <see cref="ViewModel" />
     /// </summary>
-    internal sealed class NodeTypeFilterViewModel : ViewModel, INodeTypeFilterViewModel
+    internal sealed class NodeTypeFilterViewModel : Client.ExtractorUi.ViewModel.ViewModel, INodeTypeFilterViewModel
     {
         private bool _enabled;
         private NodeTypes _nodeType;

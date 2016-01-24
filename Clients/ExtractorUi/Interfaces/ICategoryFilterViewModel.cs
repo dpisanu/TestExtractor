@@ -1,4 +1,4 @@
-﻿namespace TestExtractor.ExtractorUi.Interfaces
+﻿namespace TestExtractor.Client.ExtractorUi.Interfaces
 {
     /// <summary>
     ///     Interface specifying the API of a Category Filter View Model
