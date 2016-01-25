@@ -4,10 +4,10 @@ namespace TestExtractor.Client.ExtractorUi.ViewModel
 {
     /// <summary>
     ///     Concrete implementation of a Category Filter View Model
-    ///     Inherrits Class : <see cref="ICategoryFilterViewModel" />
-    ///     Implements Interface : <see cref="ViewModel" />
+    ///     Inherrits Class : <see cref="ViewModel" />
+    ///     Implements Interface : <see cref="ICategoryFilterViewModel" />
     /// </summary>
-    internal sealed class CategoryFilterViewModel : Client.ExtractorUi.ViewModel.ViewModel, ICategoryFilterViewModel
+    internal sealed class CategoryFilterViewModel : ViewModel, ICategoryFilterViewModel
     {
         private string _category;
         private bool _enabled;

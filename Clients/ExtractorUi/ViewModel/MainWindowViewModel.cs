@@ -13,10 +13,10 @@ namespace TestExtractor.Client.ExtractorUi.ViewModel
 {
     /// <summary>
     ///     Concrete implementation of the Main Window View Model
-    ///     Inherrits Class : <see cref="IMainWindowViewModel" />
-    ///     Implements Interface : <see cref="ViewModel" />
+    ///     Inherrits Class : <see cref="ViewModel" />
+    ///     Implements Interface : <see cref="IMainWindowViewModel" />
     /// </summary>
-    internal sealed class MainWindowViewModel : Client.ExtractorUi.ViewModel.ViewModel, IMainWindowViewModel
+    internal sealed class MainWindowViewModel : ViewModel, IMainWindowViewModel
     {
         private static readonly string ExtractTestsPropertyName =
             Reflection.PropertyName((IMainWindowViewModel vm) => vm.ExtractTests);
@@ -50,7 +50,7 @@ namespace TestExtractor.Client.ExtractorUi.ViewModel
             ExtractSuits = true;
 
             foreach (
-                NodeTypeFilterViewModel filter in
+                var filter in
                     Enum.GetValues(typeof (NodeTypes))
                         .Cast<NodeTypes>()
                         .Select(nodeType => new NodeTypeFilterViewModel(nodeType)))
