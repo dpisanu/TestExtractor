@@ -43,13 +43,23 @@ namespace TestExtractor.Client.ExtractorUi.Commands
         {
             _mainWindowViewModel.ExtractedData.Clear();
 
+            var initialNodePool = new List<INode>();
+            if (_mainWindowViewModel.IncludeIgnores)
+            {
+                initialNodePool.AddRange(_mainWindowViewModel.ExtractedDataShadow);
+            }
+            else
+            {
+                initialNodePool.AddRange(_filter.FilterOutIgnores(_mainWindowViewModel.ExtractedDataShadow).OfFilters);
+            }
+
             // Node Types Filter
             var nodeFilteredNodes = new List<INode>();
             var nodeTypes = (
                 from nodeTypeFilterViewModel in _mainWindowViewModel.NodeTypeFilters
                 where nodeTypeFilterViewModel.Enabled
                 select nodeTypeFilterViewModel.NodeType).ToList();
-            nodeFilteredNodes.AddRange(_filter.FilterNodeTypes(_mainWindowViewModel.ExtractedDataShadow, nodeTypes).OfFilters);
+            nodeFilteredNodes.AddRange(_filter.FilterNodeTypes(initialNodePool, nodeTypes).OfFilters);
 
             var categoryFilterNodes = new List<INode>();
             var categories = (

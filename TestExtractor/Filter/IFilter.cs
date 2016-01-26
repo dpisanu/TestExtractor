@@ -35,5 +35,13 @@ namespace TestExtractor.Filter
         /// <param name="nodeTypes">Node Types name to filter by</param>
         /// <returns>An <see cref="IFilterResult{T}" /></returns>
         IFilterResult<T> FilterNodeTypes<T>(IList<T> nodes, IList<NodeTypes> nodeTypes) where T : INode;
+
+        /// <summary>
+        ///     Filter out Ignored Nodes
+        /// </summary>
+        /// <typeparam name="T">Type of input object. Needs to be of <see cref="INode" /></typeparam>
+        /// <param name="nodes">Nodes source to filter</param>
+        /// <returns>An <see cref="IFilterResult{T}" /></returns>
+        IFilterResult<T> FilterOutIgnores<T>(IList<T> nodes) where T : INode;
     }
 }

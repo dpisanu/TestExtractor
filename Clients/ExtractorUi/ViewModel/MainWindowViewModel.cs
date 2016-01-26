@@ -30,6 +30,7 @@ namespace TestExtractor.Client.ExtractorUi.ViewModel
         private bool _extractTests;
         private string _information;
         private string _packageSize;
+        private bool _includeIgnores;
 
         /// <summary>
         ///     Created a new instance of <see cref="MainWindowViewModel" />
@@ -48,6 +49,7 @@ namespace TestExtractor.Client.ExtractorUi.ViewModel
             NodeTypeFilters = new ObservableCollection<INodeTypeFilterViewModel>();
             CategoryFilters = new ObservableCollection<ICategoryFilterViewModel>();
             ExtractSuits = true;
+            IncludeIgnores = true;
 
             foreach (
                 var filter in
@@ -126,6 +128,19 @@ namespace TestExtractor.Client.ExtractorUi.ViewModel
                 _extractTests = !value;
                 OnPropertyChanged();
                 OnPropertyChanged(ExtractTestsPropertyName);
+            }
+        }
+
+        /// <summary>
+        ///     Implements <see cref="IMainWindowViewModel.ExtractSuits" />
+        /// </summary>
+        public bool IncludeIgnores
+        {
+            get { return _includeIgnores; }
+            set
+            {
+                _includeIgnores = value;
+                OnPropertyChanged();
             }
         }
 

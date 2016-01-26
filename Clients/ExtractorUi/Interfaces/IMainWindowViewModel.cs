@@ -41,6 +41,11 @@ namespace TestExtractor.Client.ExtractorUi.Interfaces
         bool ExtractSuits { get; set; }
 
         /// <summary>
+        ///     Include Ignores Nodes
+        /// </summary>
+        bool IncludeIgnores { get; set; }
+
+        /// <summary>
         ///     Amount of Files
         /// </summary>
         int AmoutOfFiles { get; }

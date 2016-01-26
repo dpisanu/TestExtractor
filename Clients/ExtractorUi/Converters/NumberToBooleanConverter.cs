@@ -8,7 +8,7 @@ namespace TestExtractor.Client.ExtractorUi.Converters
     ///     A Number to Boolean Converter Class
     ///     Implements Interface : <see cref="IValueConverter" />
     /// </summary>
-    internal class NumberToBooleanConverter : IValueConverter
+    public class NumberToBooleanConverter : IValueConverter
     {
         /// <summary>
         ///     Implements <see cref="IValueConverter.Convert" />
@@ -25,11 +25,7 @@ namespace TestExtractor.Client.ExtractorUi.Converters
             {
             }
 
-            if (number == 0)
-            {
-                return false;
-            }
-            return true;
+            return number != 0;
         }
 
         /// <summary>

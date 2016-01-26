@@ -21,6 +21,7 @@ namespace TestExtractor.Client.ExtractorCli
 
         private static bool _extractSuits;
         private static bool _extractStubs;
+        private static bool _includeIgnores;
         private static bool _showhelp;
 
         private static int _chunkSize;
@@ -54,6 +55,7 @@ namespace TestExtractor.Client.ExtractorCli
             _assemblies = new List<string>();
             _extractSuits = false;
             _extractStubs = false;
+            _includeIgnores = false;
             _excludesCategories = new List<string>();
             _chunkSize = 0;
             _exportfile = string.Empty;
@@ -79,6 +81,10 @@ namespace TestExtractor.Client.ExtractorCli
                 {
                     "tm|methods", "extract test methods",
                     v => { if (v != null) _extractStubs = true; }
+                },
+                {
+                    "ii|includeignores", "include ignored nodes. Standard it is set to false",
+                    v => { if (v != null) _includeIgnores = true; }
                 },
                 {
                     "cs|chunksize=", "the chunksize to split by. 0 means one big list.",
@@ -177,7 +183,21 @@ namespace TestExtractor.Client.ExtractorCli
             var filter = new Filter.Filter();
             var nodeTypeFilterValue = _extractSuits ? NodeTypes.TestFixture : NodeTypes.TestMethod;
 
-            var filteredByNodeType = filter.FilterNodeTypes(nodes, new List<NodeTypes>() {nodeTypeFilterValue});
+            // First Filter the Ignore State
+            var ignoredFiltered = new List<INode>();
+            if (_includeIgnores)
+            {
+                ignoredFiltered.AddRange(nodes);
+            }
+            else
+            {
+                ignoredFiltered.AddRange(filter.FilterOutIgnores(nodes).OfFilters);
+            }
+
+            // Second Filter by Node Type
+            var filteredByNodeType = filter.FilterNodeTypes(ignoredFiltered, new List<NodeTypes> { nodeTypeFilterValue });
+
+            // Third Filter by Category
             var filteredByCategory = filter.FilterCategories(filteredByNodeType.OfFilters, _excludesCategories);
 
             filteredNodes.AddRange(filteredByCategory.NotOfFilters);

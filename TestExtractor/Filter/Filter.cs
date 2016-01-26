@@ -85,5 +85,16 @@ namespace TestExtractor.Filter
 
             return new FilterResult<T>(ofFilters, notOfFilters);
         }
+
+        /// <summary>
+        ///     Implements <see cref="IFilter.FilterOutIgnores{T}" />
+        /// </summary>
+        public IFilterResult<T> FilterOutIgnores<T>(IList<T> nodes) where T : INode
+        {
+            var ofFilters = nodes.Where(node => !node.Ignored).ToList();
+            var notOfFilters = nodes.Where(node => node.Ignored).ToList();
+
+            return new FilterResult<T>(ofFilters, notOfFilters);
+        }
     }
 }
