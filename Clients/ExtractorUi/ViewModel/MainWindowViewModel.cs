@@ -49,7 +49,7 @@ namespace TestExtractor.Client.ExtractorUi.ViewModel
             NodeTypeFilters = new ObservableCollection<INodeTypeFilterViewModel>();
             CategoryFilters = new ObservableCollection<ICategoryFilterViewModel>();
             ExtractSuits = true;
-            IncludeIgnores = true;
+            _includeIgnores = true;
 
             foreach (
                 var filter in
@@ -141,6 +141,8 @@ namespace TestExtractor.Client.ExtractorUi.ViewModel
             {
                 _includeIgnores = value;
                 OnPropertyChanged();
+                FilterCommand.Execute(null);
+                PopulateCategoryFiltersCommand.Execute(null);
             }
         }
 

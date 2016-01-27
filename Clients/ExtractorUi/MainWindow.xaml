@@ -149,8 +149,9 @@
                   HorizontalAlignment="Left" 
                   Margin="468,74,0,0" 
                   VerticalAlignment="Top"
-                  IsChecked="{Binding Path=IncludeIgnores}" />
-
+                  IsChecked="{Binding Path=IncludeIgnores}" 
+                  IsEnabled="{Binding AmoutOfFiles, Mode=OneWay, Converter={StaticResource NumberToBooleanConverter}}"/>
+        
         <Label Content="Categories" 
                HorizontalAlignment="Left" 
                Margin="10,95,0,0" 
